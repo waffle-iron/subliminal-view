@@ -1,70 +1,106 @@
 set nocompatible
+filetype off
 
-" PLUGINS
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Pathogen
-execute pathogen#infect()
-
-" NERDTree
-autocmd vimenter * NERDTree
-
-
-" Indentation
-
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set expandtab
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 
-" UI
+" Search
 
-set number              " show line numbers
-set showcmd             " show command in bottom bar
-set cursorline          " highlight current line
-filetype indent on      " load filetype-specific indent files
-set wildmenu            " visual autocomplete for command menu
-set lazyredraw          " redraw only when we need to.
-set showmatch           " highlight matching [{()}]
-set incsearch           " search as characters are entered
-set hlsearch            " highlight matches
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'justinmk/vim-sneak'
+Plugin 'rking/ag.vim'
+Plugin 'vim-scripts/IndexedSearch'
+Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'skwp/greplace.vim'
+Plugin 'Lokaltog/vim-easymotion'
 
+" Appereance
 
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'chrisbra/Colorizer'
 
-" Swap files
+" Languages
 
-set noswapfile
-set nobackup
-set nowb
+Plugin 'sheerun/vim-polyglot'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'scrooloose/syntastic'
+Plugin 'nelstrom/vim-markdown-preview'
+Plugin 'skwp/vim-html-escape'
 
-" Themes
+" Navigation
 
-colorscheme monokai                     " color scheme
-let g:airline_theme='murmur'
-let g:airline_powerline_fonts=1
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
+" Git
 
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mattn/gist-vim'
+Plugin 'gregsexton/gitv'
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Text
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
+Plugin 'austintaylor/vim-indentobject'
+Plugin 'bootleq/vim-textobj-rubysymbol'
+Plugin 'coderifous/textobj-word-column.vim'
+Plugin 'kana/vim-textobj-datetime'
+Plugin 'kana/vim-textobj-entire'
+Plugin 'kana/vim-textobj-function'
+Plugin 'kana/vim-textobj-user'
+Plugin 'lucapette/vim-textobj-underscore'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'thinca/vim-textobj-function-javascript'
+Plugin 'vim-scripts/argtextobj.vim'
 
-"set list listchars=tab:»·,trail:·,nbsp:·
+" Misc
 
-set textwidth=80
-set colorcolumn=+1
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'Shougo/neocomplete'
+Plugin 'briandoll/change-inside-surroundings.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'vim-scripts/camelcasemotion'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'kristijanhusak/vim-multiple-cursors'
+Plugin 'Keithbsmiley/investigate.vim'
+Plugin 'chrisbra/NrrwRgn'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'bogado/file-line'
+Plugin 'mattn/webapi-vim'
+Plugin 'sjl/gundo.vim'
+Plugin 'skwp/YankRing.vim'
+Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-scripts/AnsiEsc.vim'
+Plugin 'vim-scripts/AutoTag'
+Plugin 'vim-scripts/lastpos.vim'
+Plugin 'vim-scripts/sudo.vim'
+Plugin 'goldfeld/ctrlr.vim'
+
+call vundle#end()
+
+filetype plugin on
+filetype indent on
+
+for fpath in split(globpath('~/.vim/rc', '*.vim'), '\n')
+    exe 'source' fpath
+endfor
