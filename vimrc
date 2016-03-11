@@ -5,7 +5,6 @@ filetype plugin on
 filetype indent on
 
 " Indentation
-
 set autoindent
 set smartindent
 set smarttab
