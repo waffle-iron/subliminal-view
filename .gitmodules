@@ -52,12 +52,12 @@
 [submodule "bundle/breeze.vim"]
 	path = bundle/breeze.vim
 	url = https://github.com/gcmt/breeze.vim
-[submodule "emmet-vim"]
-	path = emmet-vim
-	url = https://github.com/mattn/emmet-vim/
 [submodule "bundle/vim-easymotion"]
 	path = bundle/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion
 [submodule "bundle/neocomplete.vim"]
 	path = bundle/neocomplete.vim
 	url = https://github.com/Shougo/neocomplete.vim
+[submodule "bundle/emmet-vim"]
+	path = bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim
