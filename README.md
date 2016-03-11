@@ -1,11 +1,5 @@
 ## Vim - What's included?
 
- * [Navigation - NERDTree, EasyMotion, CtrlP and more](doc/vim/navigation.md)
- * [Text Objects - manipulate ruby blocks, and more](doc/vim/textobjects.md)
- * [Code manipulation - rails support, comments, snippets, highlighting](doc/vim/coding.md)
- * [Utils - indents, paste buffer management, lots more](doc/vim/utils.md)
- * [General enhancements that don't add new commands](doc/vim/enhancements.md)
-
 A list of some of the most useful commands that YADR provides in vim are
 included below. This is not a comprehensive list. To get deeper knowledge,
 practice a few of these every day, and then start looking into the lists
@@ -13,11 +7,17 @@ of plugins above to learn more.
 
 #### Navigation
 
+ * `Ctrl-6` - move between buffers
  * `,z` - go to previous buffer (:bp)
  * `,x` - go to next buffer (:bn)
  * `Cmd-j` and `Cmd-k` to move up and down roughly by functions (`Alt` in Linux)
  * `Ctrl-o` - Old cursor position - this is a standard mapping but very useful, so included here
  * `Ctrl-i` - opposite of Ctrl-O (again, this is standard)
+
+#### NERDTree
+
+ *
+
 
 #### Search/Code Navigation
 
