@@ -1,3 +1,11 @@
+### File explorer panel
+
+The file explorer panel is powered by the NERDTree plugin. You can use it with the following shorcuts.
+
+
+
+
+
 # Introduction #
 * C-a == Ctrl-a 
 * M-a == Alt-a
