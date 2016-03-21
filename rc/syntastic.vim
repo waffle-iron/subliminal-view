@@ -58,4 +58,41 @@ let g:syntastic_python_checkers = ['flake8']
 " endfunc
 " nnoremap <silent> <leader>l :call SyntasticCheckCoffeescript()<cr>
 "
+""   " syntastic {{{
+"   nnoremap <silent>,l :SyntasticToggleMode<CR>
+"   nnoremap <silent>,L :SyntasticCheck<CR>
 "
+"   let g:syntastic_check_on_open = 0
+"   let g:syntastic_enable_highlighting = 0
+"   let g:syntastic_echo_current_error = 0
+"
+"   let g:syntastic_javascript_checkers = [ 'jshint', 'jscs' ]
+"   let g:syntastic_python_checkers = [ 'python' ]
+"
+"   " let g:syntastic_ruby_checkers = [ 'mri' ]
+"   " let g:syntastic_sh_checkers = [ 'sh' ]
+"   " let g:syntastic_slim_checkers = []
+"
+"   let g:syntastic_puppet_puppetlint_args = '--no-documentation-check'
+"   let g:syntastic_ruby_rubocop_exec = expand('~/.rbenv/shims/rubocop')
+"   let g:syntastic_ruby_rubocop_args = '-D'
+"   let g:syntastic_ruby_slimrb_exec = expand('~/.rbenv/shims/slimrb')
+"   let g:syntastic_sass_sass_exec = expand('~/.rbenv/shims/sass')
+"   let g:syntastic_sass_sass_args = '-I .'
+"   let g:syntastic_scss_sass_exec = expand('~/.rbenv/shims/sass')
+"   let g:syntastic_scss_sass_args = '-I .'
+"   let g:syntastic_sh_shellcheck_exec = 'shellcheck'
+"   let g:syntastic_sh_shellcheck_args = '-e 2064,2086,2139,2155'
+"
+"   " autocmd vimrc BufRead */app/views/**/*.js.coffee
+"   "   \ let b:syntastic_coffee_checkers = []
+"   " autocmd vimrc BufEnter *.coffee
+"   "   \ let g:syntastic_coffee_checkers = [ 'coffee', 'coffeelint' ]
+"
+"   if !&diff
+"     let g:syntastic_auto_loc_list = 1
+"     let g:syntastic_auto_jump = 0
+"   endif
+"   " }}}
+
+
