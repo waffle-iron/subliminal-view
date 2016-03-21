@@ -161,7 +161,7 @@ endfunction
 
     let &textwidth = textwidth
   endfunction
-  autocmd vimrc FileType gitcommit call <SID>EnhanceCommitMessage()
+" autocmd vimrc FileType gitcommit call <SID>EnhanceCommitMessage()
 
 
 " Make VIM remember position in file after reopen

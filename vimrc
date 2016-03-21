@@ -81,7 +81,6 @@ set t_Co=256							" tell the term has 256 colors
 
 
 set pastetoggle=<F2>
-" show matching brackets
 set showmatch
 
 set clipboard=unnamed
