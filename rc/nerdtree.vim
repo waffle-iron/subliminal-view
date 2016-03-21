@@ -1,30 +1,10 @@
-" File explorer (left panel) ----------------------------------------
+" File explorer (left panel) -------------------------------------------------
 " Make nerdtree look nice
-autocmd vimenter * NERDTree
 let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 30
 
-" Toggle focus cursor on file explorer
-noremap <leader>t :NERDTreeFocusToggle<CR>
-"noremap <C-r> :NERDTreeToggle<CR>:e<CR>:NERDTreeToggle<CR>
-noremap <C-g> :NERDTreeToggle<CR>
+" Always open at startup
+let g:nerdtree_tabs_open_on_console_startup=1
 
-" Open sidebar with cmd+k
-" map <D-k> :NERDTreeTabsToggle<CR>
+" Toggle NERDTree
+noremap <silent> <C-g> :NERDTreeToggle<CR>
 
-
-
-
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " => Nerd Tree
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:NERDTreeWinPos = "right"
-" let NERDTreeShowHidden=0
-" let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-" let g:NERDTreeWinSize=35
-" map <leader>nn :NERDTreeToggle<cr>
-" map <leader>nb :NERDTreeFromBookmark
-" map <leader>nf :NERDTreeFind<cr>
-"
-"
