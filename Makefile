@@ -17,7 +17,7 @@ TRMPROFILEID=$(shell dconf list /org/gnome/terminal/legacy/profiles:/ | sed -n '
 all:
 
 	@sudo ${APTGETCMD} update
-	@sudo ${APTGETCMD} ${APTGETOPTS} install python-dev python3-dev python-flake8 cmake golang build-essential npm vim-nox silversearcher-ag exuberant-ctags libboost-python-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libclang-dev
+	@sudo ${APTGETCMD} ${APTGETOPTS} install python-dev python3-dev flake8 python-flake8 python3-flake8 cmake golang build-essential npm vim-nox silversearcher-ag exuberant-ctags libboost-python-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libclang-dev
 	@git submodule update --init --recursive
 	@cd bundle/YouCompleteMe && python install.py --clang-completer --gocode-completer --tern-completer --system-libclang --system-boost
 
