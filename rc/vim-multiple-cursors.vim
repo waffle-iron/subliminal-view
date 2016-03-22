@@ -4,3 +4,9 @@ let g:multi_cursor_skip_key='<C-l>'
 let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_start_key='<F6>'
 
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " => vim-multiple-cursors
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:multi_cursor_next_key="\<C-s>"
+
+
