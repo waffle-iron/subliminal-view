@@ -14,6 +14,6 @@ let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$',
 " let NERDTreeChDirMode=0
 " let NERDTreeQuitOnOpen=1
 " let NERDTreeMouseMode=2
-" let NERDTreeShowHidden=1
+let NERDTreeShowHidden=1
 " let NERDTreeKeepTreeInNewTab=1
 

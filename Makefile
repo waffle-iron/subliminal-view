@@ -19,8 +19,9 @@ all:
 	@sudo ${APTGETCMD} update
 	@sudo ${APTGETCMD} ${APTGETOPTS} install python-dev python3-dev flake8 python-flake8 python3-flake8 cmake golang build-essential npm vim-nox silversearcher-ag exuberant-ctags libboost-python-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libclang-dev
 	@git submodule update --init --recursive
+	@git submodule foreach --recursive git reset --hard
+	@git submodule foreach --recursive git clean -fd
 	@cd bundle/YouCompleteMe && python install.py --clang-completer --gocode-completer --tern-completer --system-libclang --system-boost
-	@cd bundle/vimproc.vim && make
 
 install:
 
@@ -33,15 +34,14 @@ install:
 		mv ${HOME}/.vim ${HOME}/.vim.bak; \
 	fi
 	@mkdir -p ${HOME}/.vim/bundle
-	@mkdir -p ${HOME}/.vim/rc
 	@mkdir -p ${HOME}/.vim/tempdir
 	@mkdir -p ${HOME}/.vim/view
 	@mkdir -p ${HOME}/.local/share/fonts
 	@cp -rv bundle/* ${HOME}/.vim/bundle/
-	@cp -rv rc/* ${HOME}/.vim/rc/
 	@cp -rv fonts/* ${HOME}/.local/share/fonts/
-	@cp -rv vimrc ${HOME}/.vimrc
-	@fc-cache -rfv
+	@cp -rv main.vim ${HOME}/.vimrc
+	@cp -rv common.vim keymap.vim library.vim plugins.vim ${HOME}/.vim/
+	@fc-cache -rfv ${HOME}/.local/share/fonts
 	@echo "stty -ixon" >> ${HOME}/.bashrc
 	@dconf write /org/gnome/terminal/legacy/profiles:/${TRMPROFILEID}/font "'${TRMFONTNAME}'"
 	@bash

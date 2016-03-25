@@ -1,6 +1,3 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-
 set nocompatible
 filetype plugin on
 filetype indent on
@@ -185,6 +182,3 @@ set listchars=tab:--,trail:•,extends:#,nbsp:. " Highlight problematic whitespa
 "             let g:pymode_rope = 0
 "         endif
 
-for fpath in split(globpath('~/.vim/rc', '*.vim'), '\n')
-    exe 'source' fpath
-endfor
