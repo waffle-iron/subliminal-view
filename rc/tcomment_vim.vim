@@ -1,2 +1,0 @@
-
-noremap <C-/> :TComment<CR>

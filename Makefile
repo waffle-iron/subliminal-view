@@ -40,7 +40,7 @@ install:
 	@cp -rv bundle/* ${HOME}/.vim/bundle/
 	@cp -rv fonts/* ${HOME}/.local/share/fonts/
 	@cp -rv main.vim ${HOME}/.vimrc
-	@cp -rv common.vim keymap.vim library.vim plugins.vim ${HOME}/.vim/
+	@cp -rv common.vim keymap.vim library.vim commands.vim plugins.vim ${HOME}/.vim/
 	@fc-cache -rfv ${HOME}/.local/share/fonts
 	@echo "stty -ixon" >> ${HOME}/.bashrc
 	@dconf write /org/gnome/terminal/legacy/profiles:/${TRMPROFILEID}/font "'${TRMFONTNAME}'"

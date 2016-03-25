@@ -13,10 +13,10 @@ vnoremap <A-d> yp
 inoremap <A-d> <Esc>yypi
 
 " indent / deindent after selecting the text with (⇧ v), (.) to repeat.
-            vnoremap <Tab> >gv
-            nnoremap <Tab> >>
-            vnoremap <S-Tab> <gv
-            nnoremap <S-Tab> <<
+vnoremap <Tab> >gv
+nnoremap <Tab> >>
+vnoremap <S-Tab> <gv
+nnoremap <S-Tab> <<
 
 " Cut, Paste, Copy
 vnoremap <C-x> d

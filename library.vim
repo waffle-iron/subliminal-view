@@ -4,16 +4,21 @@ function! CmdLine(str)
     unmenu Foo
 endfunction
 
-function! SearchProject()
-    let arg = input('Search (project): ')
-    call CmdLine("Ag! \"" . arg . "\" " )
+function! SearchProject() range
+
+    let l:pattern = input('Search (project): ')
+    let l:pattern = escape(l:pattern, '\\/.*$^~[]<>')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    call CmdLine("Ag! \"" . l:pattern . "\"<CR>" )
+
 endfunction
 
 function! VSearchFile(direction) range
     let l:saved_reg = @"
     execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = escape(@", '\\/.*$^~[]<>')
     let l:pattern = substitute(l:pattern, "\n$", "", "")
 
     if a:direction == 'b'
@@ -30,21 +35,20 @@ function! VSearchProject() range
     let l:saved_reg = @"
     execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = escape(@", '\\/.*$^~[]<>')
     let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    call CmdLine("Ag! \"" . l:pattern . "\"^M" )
+    call CmdLine("Ag! \"" . l:pattern . "\"<CR>" )
 
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
 
-
 function! VSearchReplaceFile() range
     let l:saved_reg = @"
     execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = escape(@", '\\/.*$^~[]<>')
     let l:pattern = substitute(l:pattern, "\n$", "", "")
 
     let arg = input('Replace with (file): ')
@@ -141,33 +145,33 @@ endfunction
 "    endif
 " endfunction
 " "
-"   " show the project name and relative path to the current file
-"   function! ProjectFilepath(short) " {{{
-"     let l:path = fnamemodify(expand('%'), ':p:h')
-"     let l:root = getcwd()
-"
-"     let l:root = substitute(l:path, '^' . l:root . '/', '', '')
-"     let l:root = substitute(l:root, '^' . $HOME, '~', '')
-"
-"     if exists('b:git_dir')
-"       let l:root = substitute(l:root, '^' . b:git_dir, '', '')
-"       let l:project = fnamemodify(b:git_dir, ':h:t')
-"
-"       " only return project name
-"       if a:short || winwidth(0) < 60
-"         return l:project
-"       endif
-"
-"       " otherwise also add the path
-"       if fnamemodify(b:git_dir, ':h') == l:root
-"         let l:root = l:project
-"       else
-"         let l:root .= ' @ ' . l:project
-"       endif
-"     endif
-"
-"     return l:root
-"   endfunction " }}}
+  " show the project name and relative path to the current file
+  function! ProjectFilepath(short) " {{{
+    let l:path = fnamemodify(expand('%'), ':p:h')
+    let l:root = getcwd()
+
+    let l:root = substitute(l:path, '^' . l:root . '/', '', '')
+    let l:root = substitute(l:root, '^' . $HOME, '~', '')
+
+    if exists('b:git_dir')
+      let l:root = substitute(l:root, '^' . b:git_dir, '', '')
+      let l:project = fnamemodify(b:git_dir, ':h:t')
+
+      " only return project name
+      if a:short || winwidth(0) < 60
+        return l:project
+      endif
+
+      " otherwise also add the path
+      if fnamemodify(b:git_dir, ':h') == l:root
+        let l:root = l:project
+      else
+        let l:root .= ' @ ' . l:project
+      endif
+    endif
+
+    return l:root
+  endfunction " }}}
 "
 "   " show recent log entries in commit messages
 "   function! s:EnhanceCommitMessage()
