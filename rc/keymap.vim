@@ -8,9 +8,9 @@ nnoremap <C-k> mz:m-2<cr>`z
 vnoremap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " duplicate the selection
-nnoremap <C-d> yyp
-vnoremap <C-d> yp
-inoremap <C-d> <Esc>yypi
+nnoremap <A-d> yyp
+vnoremap <A-d> yp
+inoremap <A-d> <Esc>yypi
 
 " indent / deindent after selecting the text with (⇧ v), (.) to repeat.
 vnoremap <Tab> >
