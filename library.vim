@@ -5,7 +5,6 @@ function! CmdLine(str)
 endfunction
 
 function! SearchProject() range
-
     let l:pattern = input('Search (project): ')
     let l:pattern = escape(l:pattern, '\\/.*$^~[]<>')
     let l:pattern = substitute(l:pattern, "\n$", "", "")
@@ -31,19 +30,6 @@ function! VSearchFile(direction) range
     let @" = l:saved_reg
 endfunction
 
-function! VSearchProject() range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]<>')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    call CmdLine("Ag! \"" . l:pattern . "\"<CR>" )
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
 function! VSearchReplaceFile() range
     let l:saved_reg = @"
     execute "normal! vgvy"
@@ -52,7 +38,7 @@ function! VSearchReplaceFile() range
     let l:pattern = substitute(l:pattern, "\n$", "", "")
 
     let arg = input('Replace with (file): ')
-    call CmdLine("%s" . '/'. l:pattern . '/' . arg . '/g^M')
+    call CmdLine("%s" . '/'. l:pattern . '/' . arg . '/g<CR>')
 
     let @/ = l:pattern
     let @" = l:saved_reg

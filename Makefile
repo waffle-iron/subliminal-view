@@ -17,7 +17,10 @@ TRMPROFILEID=$(shell dconf list /org/gnome/terminal/legacy/profiles:/ | sed -n '
 all:
 
 	@sudo ${APTGETCMD} update
-	@sudo ${APTGETCMD} ${APTGETOPTS} install python-dev python3-dev flake8 python-flake8 python3-flake8 cmake golang build-essential npm vim-nox silversearcher-ag exuberant-ctags libboost-python-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libclang-dev
+	@sudo ${APTGETCMD} ${APTGETOPTS} install python-dev python3-dev cmake golang build-essential npm vim-nox silversearcher-ag exuberant-ctags libboost-python-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libclang-dev shellcheck devscripts ruby python3-pip clang-tidy php-cli
+	@sudo npm install -g textlint-plugin-html textlint jshint jscs textlint-plugin-markdown csslint
+	@sudo gem install rubocop
+	@sudo pip install flake8 vim-vint
 	@git submodule update --init --recursive
 	@git submodule foreach --recursive git reset --hard
 	@git submodule foreach --recursive git clean -fd
