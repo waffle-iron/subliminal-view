@@ -12,7 +12,7 @@ APTGETOPTS=-o Apt::Install-Recommends=false \
 	-o DPkg::Options::=--force-unsafe-io
 TRMFONTNAME=Droid Sans Mono for Powerline 11
 TRMPROFILEID=$(shell dconf list /org/gnome/terminal/legacy/profiles:/ | sed -n '1p' | sed 's|/||g')
-BUILDPKGLIST=python-dev python3-dev cmake golang build-essential \
+BUILDPKGLIST=cmake golang npm \
 		libboost-python-dev libboost-filesystem-dev libboost-thread-dev \
 		libboost-regex-dev libclang-dev
 RUNPKGLIST=clang-tidy bundler virtualenv npm php-cli silversearcher-ag exuberant-ctags vim-nox shellcheck devscripts
@@ -70,6 +70,7 @@ install:
 	@fc-cache -rfv ${HOME}/.local/share/fonts
 	@echo "stty -ixon" >> ${HOME}/.bashrc
 	@dconf write /org/gnome/terminal/legacy/profiles:/${TRMPROFILEID}/font "'${TRMFONTNAME}'"
+	@dconf write /org/gnome/terminal/legacy/profiles:/${TRMPROFILEID}/use-system-font "false"
 	@bash
 
 #
