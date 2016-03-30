@@ -49,7 +49,7 @@ set list
 set listchars=tab:--,trail:·,extends:#,nbsp:.
 set backspace=indent,eol,start                     " Allow backspace in insert mode
 set history=1000                                " Store lots of :cmdline history
-set visualbell                                  " No sounds
+set novisualbell                                  " No sounds
 set laststatus=2
 
 set hidden                                        " This makes vim act like all other editors, buffers can
@@ -66,6 +66,11 @@ let mapleader=','                                " Change leader to a comma beca
 
 set mouse=a
 set mousehide
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 11
 
 set encoding=utf-8              " Set default encoding to UTF-8
 scriptencoding utf-8
@@ -146,52 +151,4 @@ set timeout ttimeoutlen=50
 " endfunction
 " inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 " inoremap <S-Tab> <c-n>
-
-"
-" """"""""""""""""""""""""""""""
-" " => Visual mode related
-" """"""""""""""""""""""""""""""
-" " Visual mode pressing * or # searches for the current selection
-" " Super useful! From an idea by Michael Naumann
-" vnoremap <silent> * :call VisualSelection('f', '')<CR>
-" vnoremap <silent> # :call VisualSelection('b', '')<CR>
-"
-"
-
-
-" " Let 'tl' toggle between this and the last accessed tab
-" let g:lasttab = 1
-" nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-" au TabLeave * let g:lasttab = tabpagenr()
-"
-"
-" " Opens a new tab with the current buffer's path
-" " Super useful when editing files in the same directory
-" map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-"
-" " Switch CWD to the directory of the open buffer
-" map <leader>cd :cd %:p:h<cr>:pwd<cr>
-"
-" " Specify the behavior when switching between buffers
-" try
-"   set switchbuf=useopen,usetab,newtab
-"   set stal=2
-" catch
-" endtry
-"
-
-
-
-"     " PyMode {
-"         " Disable if python support not present
-"         if !has('python') && !has('python3')
-"             let g:pymode = 0
-"         endif
-"
-"         if isdirectory(expand("~/.vim/bundle/python-mode"))
-"             let g:pymode_lint_checkers = ['pyflakes']
-"             let g:pymode_trim_whitespaces = 0
-"             let g:pymode_options = 0
-"             let g:pymode_rope = 0
-"         endif
 

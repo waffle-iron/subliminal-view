@@ -12,15 +12,38 @@ APTGETOPTS=-o Apt::Install-Recommends=false \
 	-o DPkg::Options::=--force-unsafe-io
 TRMFONTNAME=Droid Sans Mono for Powerline 11
 TRMPROFILEID=$(shell dconf list /org/gnome/terminal/legacy/profiles:/ | sed -n '1p' | sed 's|/||g')
+BUILDPKGLIST=python-dev python3-dev cmake golang build-essential \
+		libboost-python-dev libboost-filesystem-dev libboost-thread-dev \
+		libboost-regex-dev libclang-dev
+RUNPKGLIST=clang-tidy bundler virtualenv npm php-cli silversearcher-ag exuberant-ctags vim-nox shellcheck devscripts
 
 
-all:
+purge-run-deps:
+
+	@sudo ${APTGETCMD} ${APTGETOPTS} remove ${RUNPKGLIST}
+
+purge-build-deps:
+
+	@sudo ${APTGETCMD} ${APTGETOPTS} remove ${BUILDPKGLIST}
+
+run-deps:
 
 	@sudo ${APTGETCMD} update
-	@sudo ${APTGETCMD} ${APTGETOPTS} install python-dev python3-dev cmake golang build-essential npm vim-nox silversearcher-ag exuberant-ctags libboost-python-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev libclang-dev shellcheck devscripts ruby python3-pip clang-tidy php-cli
-	@sudo npm install -g textlint-plugin-html textlint jshint jscs textlint-plugin-markdown csslint
-	@sudo gem install rubocop
-	@sudo pip install flake8 vim-vint
+	@sudo ${APTGETCMD} ${APTGETOPTS} install ${RUNPKGLIST}
+	@bundle install --gemfile data/Gemfile --path ${HOME}/.vim/sandboxes --standalone
+	@npm --prefix ${HOME}/.vim/sandboxes install textlint-plugin-html textlint jshint jscs textlint-plugin-markdown csslint
+	@virtualenv ${HOME}/.vim/sandboxes/virtualenv
+	@${HOME}/.vim/sandboxes/virtualenv/bin/pip install flake8 vim-vint
+	@export GOPATH=${HOME}/.vim/sandboxes/golang && go get github.com/alecthomas/gometalinter
+
+
+build-deps:
+
+	@sudo ${APTGETCMD} update
+	@sudo ${APTGETCMD} ${APTGETOPTS} install ${BUILDPKGLIST}
+
+build:
+
 	@git submodule update --init --recursive
 	@git submodule foreach --recursive git reset --hard
 	@git submodule foreach --recursive git clean -fd
