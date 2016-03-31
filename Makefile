@@ -12,35 +12,38 @@ APTGETOPTS=-o Apt::Install-Recommends=false \
 	-o DPkg::Options::=--force-unsafe-io
 TRMFONTNAME=Droid Sans Mono for Powerline 11
 TRMPROFILEID=$(shell dconf list /org/gnome/terminal/legacy/profiles:/ | sed -n '1p' | sed 's|/||g')
-BUILDPKGLIST=cmake golang npm \
-		libboost-python-dev libboost-filesystem-dev libboost-thread-dev \
-		libboost-regex-dev libclang-dev
-RUNPKGLIST=clang-tidy bundler virtualenv npm php-cli silversearcher-ag exuberant-ctags vim-nox shellcheck devscripts
+PKGLIST=cmake golang npm libboost-python-dev libboost-filesystem-dev \
+		libboost-thread-dev libboost-regex-dev libclang-dev clang-tidy \
+		bundler virtualenv npm php-cli silversearcher-ag exuberant-ctags \
+		vim-nox shellcheck devscripts
 
 
 purge-run-deps:
 
 	@sudo ${APTGETCMD} ${APTGETOPTS} remove ${RUNPKGLIST}
 
+
 purge-build-deps:
 
 	@sudo ${APTGETCMD} ${APTGETOPTS} remove ${BUILDPKGLIST}
 
-run-deps:
+
+install-run-deps:
 
 	@sudo ${APTGETCMD} update
 	@sudo ${APTGETCMD} ${APTGETOPTS} install ${RUNPKGLIST}
-	@bundle install --gemfile data/Gemfile --path ${HOME}/.vim/sandboxes --standalone
-	@npm --prefix ${HOME}/.vim/sandboxes install textlint-plugin-html textlint jshint jscs textlint-plugin-markdown csslint
-	@virtualenv ${HOME}/.vim/sandboxes/virtualenv
-	@${HOME}/.vim/sandboxes/virtualenv/bin/pip install flake8 vim-vint
-	@export GOPATH=${HOME}/.vim/sandboxes/golang && go get github.com/alecthomas/gometalinter
+	@bundle install --gemfile data/Gemfile --path ${HOME}/.vim/sandboxes/ruby --standalone
+	@npm --prefix ${HOME}/.vim/sandboxes/node install textlint-plugin-html textlint jshint jscs textlint-plugin-markdown csslint
+	@virtualenv ${HOME}/.vim/sandboxes/python && ${HOME}/.vim/sandboxes/python/bin/pip install flake8 vim-vint
+	@export GOPATH=${HOME}/.vim/sandboxes/go && go get -u github.com/alecthomas/gometalinter
+	@export GOPATH=${HOME}/.vim/sandboxes/go && ${HOME}/.vim/sandboxes/go/bin/gometalinter -i -u
 
 
-build-deps:
+install-build-deps:
 
 	@sudo ${APTGETCMD} update
 	@sudo ${APTGETCMD} ${APTGETOPTS} install ${BUILDPKGLIST}
+
 
 build:
 
@@ -48,6 +51,7 @@ build:
 	@git submodule foreach --recursive git reset --hard
 	@git submodule foreach --recursive git clean -fd
 	@cd bundle/YouCompleteMe && python install.py --clang-completer --gocode-completer --tern-completer --system-libclang --system-boost
+
 
 install:
 

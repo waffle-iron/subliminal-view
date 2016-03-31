@@ -172,28 +172,51 @@ nmap <silent> <leader>sc :SyntasticCheck<CR>
 
 " Python
 let g:syntastic_python_checkers = ['python', 'flake8']
+let g:syntastic_python_python_exec = '~/.vim/sandboxes/python/bin/python'
+let g:syntastic_python_flake8_exec = '~/.vim/sandboxes/python/bin/flake8'
+
 " Ruby
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_ruby_mri_exec = '~/.vim/sandboxes/ruby/ruby/2.3.0/bin/ruby'
+let g:syntastic_ruby_rubocop_exec = '~/.vim/sandboxes/ruby/ruby/2.3.0/bin/rubocop'
+
 " Shell
 let g:syntastic_sh_checkers = ['sh', 'shellcheck', 'checkbashisms']
+
 " Javascript
 let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+let g:syntastic_javascript_jshint_exec =  '~/.vim/sandboxes/node/node_modules/.bin/jshint'
+let g:syntastic_javascript_jscs_exec =  '~/.vim/sandboxes/node/node_modules/.bin/jscs'
+
 " Go
-let g:syntastic_go_checkers = ['go', 'golint']
+let g:syntastic_go_checkers = ['go', 'gometalinter']
+
 " Markdown
 let g:syntastic_markdown_checkers = ['textlint']
+let g:syntastic_markdown_textlint_exec =  '~/.vim/sandboxes/node/node_modules/.bin/textlint'
+
 " HTML
 let g:syntastic_html_checkers = ['textlint']
+let g:syntastic_html_textlint_exec =  '~/.vim/sandboxes/node/node_modules/.bin/textlint'
+
 " CSS
 let g:syntastic_css_checkers = ['csslint']
+let g:syntastic_css_csslint_exec =  '~/.vim/sandboxes/node/node_modules/.bin/csslint'
+
 " C
 let g:syntastic_c_checkers = ['clang_tidy']
+
 " C++
 let g:syntastic_cpp_checkers = ['clang_tidy']
+
 " Vim
 let g:syntastic_vim_checkers = ['vint']
+let g:syntastic_vim_vint_exec = '~/.vim/sandboxes/python/bin/vint'
+
 " SQL
 let g:syntastic_sql_checkers = ['sqlint']
+let g:syntastic_sql_sqlint_exec = '~/.vim/sandboxes/ruby/ruby/2.3.0/bin/sqlint'
+
 " PHP
 let g:syntastic_php_checkers = ['php']
 
