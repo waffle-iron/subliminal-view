@@ -5,7 +5,7 @@ noremap <silent> <Esc>[84;5~ :vs<BAR>:b#<CR>
 
 
 " Text editing
-noremap <silent> <C-a> gg<S-v>G
+noremap <silent> <C-a> ggVG
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nnoremap <silent> <C-S-Down> mz:m+<cr>`z
