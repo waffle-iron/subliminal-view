@@ -1,6 +1,7 @@
 " Sublime Text key noremappings
 
-
+" Open last closed tab
+noremap <silent> <Esc>[84;5~ :vs<BAR>:b#<CR>
 
 
 " Text editing
