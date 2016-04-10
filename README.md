@@ -6,3 +6,6 @@
 
 <img align="right" height="260" src="https://cloud.githubusercontent.com/assets/324683/14374725/0a483732-fd23-11e5-9b56-b0e280b20760.png">
 
+---
+
+Subliminal Vim is a group of Vim plugins and configurations 

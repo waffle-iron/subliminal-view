@@ -231,32 +231,3 @@ URxvt.keysym.C-0x58            : \033[88;5~
 URxvt.keysym.C-0x59            : \033[89;5~
 ! Ctrl-Shift-z
 URxvt.keysym.C-0x5A            : \033[90;5~
-!
-!
-!
-! URxvt.keysym.C-a               : \033[97;5~
-! URxvt.keysym.C-b               : \033[98;5~
-! URxvt.keysym.C-c               : \033[99;5~
-! URxvt.keysym.C-d               : \033[100;5~
-! URxvt.keysym.C-e               : \033[101;5~
-! URxvt.keysym.C-f               : \033[102;5~
-! URxvt.keysym.C-g               : \033[103;5~
-! URxvt.keysym.C-h               : \033[104;5~
-! URxvt.keysym.C-i               : \033[105;5~
-! URxvt.keysym.C-j               : \033[106;5~
-! URxvt.keysym.C-k               : \033[107;5~
-! URxvt.keysym.C-l               : \033[108;5~
-! URxvt.keysym.C-m               : \033[109;5~
-! URxvt.keysym.C-n               : \033[110;5~
-! URxvt.keysym.C-o               : \033[111;5~
-! URxvt.keysym.C-p               : \033[112;5~
-! URxvt.keysym.C-q               : \033[113;5~
-! URxvt.keysym.C-r               : \033[114;5~
-! URxvt.keysym.C-s               : \033[115;5~
-! URxvt.keysym.C-t               : \033[116;5~
-! URxvt.keysym.C-u               : \033[117;5~
-! URxvt.keysym.C-v               : \033[118;5~
-! URxvt.keysym.C-w               : \033[119;5~
-! URxvt.keysym.C-x               : \033[120;5~
-! URxvt.keysym.C-y               : \033[121;5~
-! URxvt.keysym.C-z               : \033[122;5~

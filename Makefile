@@ -49,6 +49,7 @@ install_build_dependencies:
 
 build:
 
+	@cd bundle/vimproc && make
 	@cd bundle/YouCompleteMe && python install.py \
 		--clang-completer --gocode-completer \
 		--tern-completer --system-libclang --system-boost
@@ -56,14 +57,14 @@ build:
 
 copy:
 
-	@if [ -f ${HOME}/.subliminal-vim ]; then \
+	@if [ -d ${HOME}/.subliminal-vim ]; then \
 		rm -rf ${HOME}/.subliminal-vim.bak; \
 		mv ${HOME}/.subliminal-vim ${HOME}/.subliminal-vim.bak; \
 	fi
 	@mkdir -p ${HOME}/.subliminal-vim/bundle
 	@mkdir -p ${HOME}/.subliminal-vim/tempdir
 	@mkdir -p ${HOME}/.local/share/fonts
-	@rsync -qavz *.vim ${HOME}/.subliminal-vim/
+	@rsync -qavz settings/* ${HOME}/.subliminal-vim/settings/
 	@rsync -qavz bundle/* ${HOME}/.subliminal-vim/bundle/
 	@rsync -qavz fonts/* ${HOME}/.local/share/fonts/
 	@rsync -qavz Xresources subliminal-vim.png subliminal-vim.desktop subliminal-vim.sh ${HOME}/.subliminal-vim/

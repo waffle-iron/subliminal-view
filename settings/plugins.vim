@@ -27,27 +27,62 @@ nmap <silent> g* <Plug>(incsearch-nohl-g*)
 nmap <silent> g# <Plug>(incsearch-nohl-g#)
 
 
-" bundle/ag.vim
+" bundle/unite.vim
 " ------------------------------------------------------------------
 
-" Ag should search only on project root
-let g:ag_working_path_mode='r'
+call unite#filters#matcher_default#use(['matcher_regexp'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 
-" Use Ag over Grep
-set grepprg=ag\ --vimgrep
+nnoremap <C-p> :Unite -start-insert -buffer-name=files file_rec/async<CR>
+nnoremap <C-S-f> :Unite -start-insert -buffer-name=files grep:.<CR>
 
-" Call Ag to search for term in project
-nmap <silent> <leader>pf :call SearchProject()<CR>
+" Use ag (the silver searcher)
+" https://github.com/ggreer/the_silver_searcher
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ' .
+\ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_file_rec_max_cache_files = 0
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 
-" Search for selected term in file (forwards)
-vmap <silent> <leader>ff :call VSearchFile('f')<CR>
 
-" Search for selected term in file (backwards)
-vmap <silent> <leader>fb :call VSearchFile('b')<CR>
 
-" Replace selected term with another inside file
-vmap <silent> <leader>fr :call VSearchReplaceFile()<CR>
 
+
+
+
+let g:unite_source_menu_menus = {}
+
+let g:unite_source_menu_menus.mappings = {
+      \     'description' : 'mappings',
+\ }
+
+let g:unite_source_menu_menus.mappings.candidates = {
+    \   'maps': 'Map',
+    \ }
+let g:unite_source_menu_menus.mappings.command_candidates = {
+    \     'maps' : ':verbose map',
+    \ }
+
+" " Ag should search only on project root
+" let g:ag_working_path_mode='r'
+"
+" " Use Ag over Grep
+" set grepprg=ag\ --vimgrep
+"
+" " Call Ag to search for term in project
+" nmap <silent> <leader>pf :call SearchProject()<CR>
+"
+" " Search for selected term in file (forwards)
+" vmap <silent> <leader>ff :call VSearchFile('f')<CR>
+"
+" " Search for selected term in file (backwards)
+" vmap <silent> <leader>fb :call VSearchFile('b')<CR>
+"
+" " Replace selected term with another inside file
+" vmap <silent> <leader>fr :call VSearchReplaceFile()<CR>
+"
 
 
 " bundle/vim-easygrep

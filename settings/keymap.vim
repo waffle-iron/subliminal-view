@@ -1,5 +1,32 @@
 " Sublime Text key noremappings
 
+map <Esc>[65;5~ <C-S-a>
+map <Esc>[66;5~ <C-S-b>
+map <Esc>[67;5~ <C-S-c>
+map <Esc>[68;5~ <C-S-d>
+map <Esc>[69;5~ <C-S-e>
+map <Esc>[70;5~ <C-S-f>
+map <Esc>[71;5~ <C-S-g>
+map <Esc>[72;5~ <C-S-h>
+map <Esc>[73;5~ <C-S-i>
+map <Esc>[74;5~ <C-S-j>
+map <Esc>[75;5~ <C-S-k>
+map <Esc>[76;5~ <C-S-l>
+map <Esc>[77;5~ <C-S-m>
+map <Esc>[78;5~ <C-S-n>
+map <Esc>[79;5~ <C-S-o>
+map <Esc>[80;5~ <C-S-p>
+map <Esc>[81;5~ <C-S-q>
+map <Esc>[82;5~ <C-S-r>
+map <Esc>[83;5~ <C-S-s>
+map <Esc>[84;5~ <C-S-t>
+map <Esc>[85;5~ <C-S-u>
+map <Esc>[86;5~ <C-S-v>
+map <Esc>[87;5~ <C-S-w>
+map <Esc>[88;5~ <C-S-x>
+map <Esc>[89;5~ <C-S-y>
+map <Esc>[90;5~ <C-S-z>
+
 " Open last closed tab
 noremap <silent> <Esc>[84;5~ :vs<BAR>:b#<CR>
 

@@ -22,9 +22,6 @@
 [submodule "bundle/vim-monokai"]
 	path = bundle/vim-monokai
 	url = https://github.com/sickill/vim-monokai.git
-[submodule "bundle/ag.vim"]
-	path = bundle/ag.vim
-	url = https://github.com/rking/ag.vim
 [submodule "bundle/tcomment_vim"]
 	path = bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim
@@ -34,9 +31,6 @@
 [submodule "bundle/vim-multiple-cursors"]
 	path = bundle/vim-multiple-cursors
 	url = https://github.com/kristijanhusak/vim-multiple-cursors
-[submodule "bundle/ctrlp.vim"]
-	path = bundle/ctrlp.vim
-	url = https://github.com/ctrlpvim/ctrlp.vim
 [submodule "bundle/incsearch.vim"]
 	path = bundle/incsearch.vim
 	url = https://github.com/haya14busa/incsearch.vim
@@ -52,15 +46,9 @@
 [submodule "bundle/emmet-vim"]
 	path = bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim
-[submodule "bundle/gitv"]
-	path = bundle/gitv
-	url = https://github.com/gregsexton/gitv
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular
-[submodule "bundle/YankRing.vim"]
-	path = bundle/YankRing.vim
-	url = https://github.com/skwp/YankRing.vim
 [submodule "bundle/vim-polyglot"]
 	path = bundle/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
@@ -76,18 +64,12 @@
 [submodule "bundle/vim-pathogen"]
 	path = bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen
-[submodule "bundle/tagbar"]
-	path = bundle/tagbar
-	url = https://github.com/majutsushi/tagbar
 [submodule "bundle/vim-textobj-user"]
 	path = bundle/vim-textobj-user
 	url = https://github.com/kana/vim-textobj-user
 [submodule "bundle/conflict-marker.vim"]
 	path = bundle/conflict-marker.vim
 	url = https://github.com/rhysd/conflict-marker.vim
-[submodule "bundle/undotree"]
-	path = bundle/undotree
-	url = https://github.com/mbbill/undotree
 [submodule "bundle/auto-pairs"]
 	path = bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
@@ -115,9 +97,15 @@
 [submodule "bundle/vim-auto-save"]
 	path = bundle/vim-auto-save
 	url = https://github.com/vim-scripts/vim-auto-save
-[submodule "bundle/GoldenView.Vim"]
-	path = bundle/GoldenView.Vim
-	url = https://github.com/zhaocai/GoldenView.Vim
 [submodule "bundle/vim-ctrlp-cmdpalette"]
 	path = bundle/vim-ctrlp-cmdpalette
 	url = https://github.com/fisadev/vim-ctrlp-cmdpalette
+[submodule "bundle/unite.vim"]
+	path = bundle/unite.vim
+	url = https://github.com/Shougo/unite.vim
+[submodule "bundle/vimproc"]
+	path = bundle/vimproc
+	url = http://github.com/Shougo/vimproc
+[submodule "bundle/vim-minimap"]
+	path = bundle/vim-minimap
+	url = https://github.com/severin-lemaignan/vim-minimap
