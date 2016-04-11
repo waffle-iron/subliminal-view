@@ -1,3 +1,4 @@
+autocmd! VimEnter * Minimap
 "
 " fu! DoColor()
 "         let identifier="bgColor"
