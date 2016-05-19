@@ -131,8 +131,9 @@ endfunction
 "    endif
 " endfunction
 " "
-  " show the project name and relative path to the current file
-  function! ProjectFilepath(short) " {{{
+
+" show the project name and relative path to the current file
+function! ProjectFilePath(short)
     let l:path = fnamemodify(expand('%'), ':p:h')
     let l:root = getcwd()
 
@@ -140,24 +141,24 @@ endfunction
     let l:root = substitute(l:root, '^' . $HOME, '~', '')
 
     if exists('b:git_dir')
-      let l:root = substitute(l:root, '^' . b:git_dir, '', '')
-      let l:project = fnamemodify(b:git_dir, ':h:t')
+        let l:root = substitute(l:root, '^' . b:git_dir, '', '')
+        let l:project = fnamemodify(b:git_dir, ':h:t')
 
-      " only return project name
-      if a:short || winwidth(0) < 60
-        return l:project
-      endif
+        " only return project name
+        if a:short || winwidth(0) < 60
+            return l:project
+        endif
 
-      " otherwise also add the path
-      if fnamemodify(b:git_dir, ':h') == l:root
-        let l:root = l:project
-      else
-        let l:root .= ' @ ' . l:project
-      endif
+        " otherwise also add the path
+        if fnamemodify(b:git_dir, ':h') == l:root
+            let l:root = l:project
+        else
+            let l:root .= ' @ ' . l:project
+        endif
     endif
 
     return l:root
-  endfunction " }}}
+endfunction
 "
 "   " show recent log entries in commit messages
 "   function! s:EnhanceCommitMessage()

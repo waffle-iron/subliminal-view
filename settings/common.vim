@@ -69,7 +69,7 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 11
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
 
 set encoding=utf-8              " Set default encoding to UTF-8
 scriptencoding utf-8
@@ -106,6 +106,7 @@ set undolevels=1000         " Maximum number of changes that can be undone
 set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 
 " window/icon titles
+
 set title
 set icon
 let &titlestring = '%t%m%r\ \[%{ProjectFilepath(1)}\]'
@@ -123,17 +124,6 @@ set linespace=0                 " No extra spaces between rows
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set listchars=tab:--,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-
-" Fix Alt mappings
-" http://stackoverflow.com/a/10216459
-"
-" let c='a'
-" while c <= 'z'
-"   exec "set <A-".c.">=\e".c
-"   exec "imap \e".c." <A-".c.">"
-"   let c = nr2char(1+char2nr(c))
-" endw
-"
 set timeout ttimeoutlen=50
 
 " " Tab completion
