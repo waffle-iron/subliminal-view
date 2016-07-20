@@ -1,3 +1,22 @@
+"   This file is part of Sublime Vim
+"   Copyright (c) 2016, Sublime Vim Developers
+"
+"   Please refer to CONTRIBUTORS.md for a complete list of Copyright
+"   holders.
+"
+"   Tribus is free software: you can redistribute it and/or modify
+"   it under the terms of the GNU General Public License as published by
+"   the Free Software Foundation, either version 3 of the License, or
+"   (at your option) any later version.
+"
+"   Tribus is distributed in the hope that it will be useful,
+"   but WITHOUT ANY WARRANTY; without even the implied warranty of
+"   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+"   GNU General Public License for more details.
+"
+"   You should have received a copy of the GNU General Public License
+"   along with this program. If not, see <http://www.gnu.org/licenses/>.
+
 filetype plugin on
 filetype indent on
 
@@ -14,8 +33,8 @@ set expandtab
 
 " Folds
 
-set foldnestmax=3                               " deepest fold is 3 levels
-set foldmethod=indent                           " fold based on indent
+set foldnestmax=3                             " deepest fold is 3 levels
+set foldmethod=indent                         " fold based on indent
 set nofoldenable                                " dont fold by default
 
 " Completion
@@ -23,12 +42,10 @@ set nofoldenable                                " dont fold by default
 set wildmenu                                    "enable ctrl-n and ctrl-p to scroll thru matches
 set wildmode=list:longest,full
 set wildignore=*.pyc,*.o,*.lo,*.la,*.exe,*.swp,*.db,*.bak,*.old,*.dat,*.,tmp,*.mdb,*~,~*
-"
+
 " Scrolling
 
-set scrolloff=8                                 " Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
+"set scrolloff=999                             " Start scrolling when we're 8 lines away from margins
 
 " UI
 
@@ -46,51 +63,41 @@ set textwidth=80
 set colorcolumn=-1
 set list
 set listchars=tab:--,trail:·,extends:#,nbsp:.
-set backspace=indent,eol,start                     " Allow backspace in insert mode
-set history=1000                                " Store lots of :cmdline history
-set novisualbell                                  " No sounds
+set backspace=indent,eol,start                " Allow backspace in insert mode
+set history=1000                              " Store lots of :cmdline history
+set novisualbell                                " No sounds
 set laststatus=2
 
-set hidden                                        " This makes vim act like all other editors, buffers can
+set hidden                                      " This makes vim act like all other editors, buffers can
                                                 " exist in the background without being in a window.
                                                 " http://items.sjbach.com/319/configuring-vim-right
-syntax on                                           " turn on syntax highlighting
-set splitright                  " Split vertical windows right to the current windows
-set splitbelow                  " Split horizontal windows below to the current windows
 
-let mapleader=','                                " Change leader to a comma because the backslash is too far away
+syntax on                                       " turn on syntax highlighting
+set splitright                                  " Split vertical windows right to the current windows
+set splitbelow                                  " Split horizontal windows below to the current windows
+
+let mapleader=','                               " Change leader to a comma because the backslash is too far away
                                                 " That means all \x commands turn into ,x
-                                                " The mapleader has to be set before vundle starts loading all
-                                                " the plugins.
-
 set mouse=a
 set mousehide
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
 
-set encoding=utf-8              " Set default encoding to UTF-8
+set encoding=utf-8                            " Set default encoding to UTF-8
 scriptencoding utf-8
 
 " Swap files
 
 set autoread                                    " Reload files changed outside vim
-set autowrite                                    " Automatically save before :next, :make etc.
+set autowrite                                   " Automatically save before :next, :make etc.
 set noswapfile
 set nobackup
 set nowritebackup
 
 " Color themes
 
-colorscheme monokai                     " color scheme
-set t_Co=256                            " tell the term has 256 colors
-
-
+colorscheme monokai                             " color scheme
+set t_Co=256                                  " tell the term has 256 colors
 
 set pastetoggle=<F2>
-
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -109,35 +116,17 @@ set undoreload=10000        " Maximum number lines to save for undo on a buffer 
 
 set title
 set icon
-let &titlestring = '%t%m%r\ \[%{ProjectFilepath(1)}\]'
-let &iconstring = &titlestring
+let &titlestring='%F (%{ProjectFilePath(1)}) - Subliminal Vim'
+let &iconstring=&titlestring
 
 set clipboard=unnamed,unnamedplus
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
 set virtualedit=onemore             " Allow for cursor beyond last character
-set iskeyword-=.                    " '.' is an end of word designator
-set iskeyword-=#                    " '#' is an end of word designator
-set iskeyword-=-                    " '-' is an end of word designator
 
 set linespace=0                 " No extra spaces between rows
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set listchars=tab:--,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
 set timeout ttimeoutlen=50
-
-" " Tab completion
-" " will insert tab at beginning of line,
-" " will use completion if not at beginning
-" set wildmode=list:longest,list:full
-" function! InsertTabWrapper()
-"     let col = col('.') - 1
-"     if !col || getline('.')[col - 1] !~ '\k'
-"         return "\<tab>"
-"     else
-"         return "\<c-p>"
-"     endif
-" endfunction
-" inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-" inoremap <S-Tab> <c-n>
 

@@ -22,7 +22,7 @@ URxvt*.internalborder:	0
 URxvt*.transparent: false
 URxvt*.iso14755: false
 URxvt*.iso14755_52: false
-URxvt*.font: xft:DejaVu Sans Mono for Powerline:style=Book:size=11
+URxvt*.font: xft:DejaVu Sans Mono for Powerline:style=Book:size=10
 URxvt*.iconFile: /usr/share/icons/subliminal-vim.png
 URxvt*.iconName: subliminal-vim
 URxvt*.title: Subliminal Vim

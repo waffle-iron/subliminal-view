@@ -1,3 +1,23 @@
+"   This file is part of Sublime Vim
+"   Copyright (c) 2016, Sublime Vim Developers
+"
+"   Please refer to CONTRIBUTORS.md for a complete list of Copyright
+"   holders.
+"
+"   Tribus is free software: you can redistribute it and/or modify
+"   it under the terms of the GNU General Public License as published by
+"   the Free Software Foundation, either version 3 of the License, or
+"   (at your option) any later version.
+"
+"   Tribus is distributed in the hope that it will be useful,
+"   but WITHOUT ANY WARRANTY; without even the implied warranty of
+"   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+"   GNU General Public License for more details.
+"
+"   You should have received a copy of the GNU General Public License
+"   along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+
 " ----------------------------------------------------------------------------
 " SEARCH FUNCTIONS
 " ----------------------------------------------------------------------------
@@ -164,8 +184,10 @@ let g:indentLine_color_term = 239
 
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1
-let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeShowHidden = 1
+let NERDTreeAutoCenter = 0
+let NERDTreeMouseMode = 2
 
 " Toggle NERDTree
 nmap <silent> <leader>nt :NERDTreeTabsToggle<CR>
@@ -389,6 +411,7 @@ let g:webdevicons_enable_airline_tabline = 0
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
+let g:NERDTreeUpdateOnCursorHold = 0
 
 " bundle/vim-easymotion
 " ------------------------------------------------------------------
@@ -445,12 +468,12 @@ let g:multi_cursor_next_key='<C-d>'
 " bundle/vim-rooter
 " ------------------------------------------------------------------
 
-
-"   let g:rooter_manual_only = 1
-"   let g:rooter_change_directory_for_non_project_files = 0
-"   let g:rooter_use_lcd = 1
-"   let g:rooter_silent_chdir = 1
-"   let g:rooter_patterns = ['Gemfile', 'package.json', 'bower.json', '.git', '.git/', '_darcs/', '.hg/', '.bzr/', '.svn/']
+let g:rooter_resolve_links = 1
+let g:rooter_change_directory_for_non_project_files = 0
+let g:rooter_use_lcd = 1
+let g:rooter_silent_chdir = 1
+let g:rooter_patterns = ['Gemfile', 'package.json', 'bower.json',
+            \ '.git', '.git/', '_darcs/', '.hg/', '.bzr/', '.svn/']
 
 
 " bundle/vim-snippets

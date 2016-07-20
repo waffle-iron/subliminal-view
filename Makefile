@@ -10,13 +10,13 @@ APTGETOPTS=-o Apt::Install-Recommends=false \
 	-o DPkg::Options::=--force-confnew \
 	-o DPkg::Options::=--force-overwrite \
 	-o DPkg::Options::=--force-unsafe-io
-TRMFONTNAME=DejaVu Sans Mono for Powerline 11
+TRMFONTNAME=DejaVu Sans Mono for Powerline 10
 TRMPROFILEID=$(shell dconf list /org/gnome/terminal/legacy/profiles:/ | sed -n '1p' | sed 's|/||g')
 
 BUILDPKGLIST=cmake devscripts gcc g++ golang nodejs imagemagick librsvg2-bin \
-	libboost-python-dev libboost-filesystem-dev libboost-thread-dev libboost-regex-dev \
-	libclang-dev ruby-dev
-RUNPKGLIST=silversearcher-ag exuberant-ctags vim-nox xsel rsync rxvt-unicode-256color
+	ruby-dev
+RUNPKGLIST=silversearcher-ag exuberant-ctags vim-nox xsel rsync \
+	rxvt-unicode-256color dconf-cli
 LINTPKGLIST=golang clang-tidy ruby virtualenv nodejs php-cli cabal-install
 
 RUBYSNDBX=${HOME}/.subliminal-vim/sandboxes/ruby
@@ -33,18 +33,17 @@ GOPKGLIST=github.com/alecthomas/gometalinter
 RUBYPKGLIST=sqlint rubocop
 HASKELLPKGLIST=shellcheck
 
-all: init install_build_dependencies build
+all: install_build_dependencies init build
 install: copy install_runtime_dependencies install_linters config
 
 init:
 
-	@git submodule update --init --recursive --remote
+	@git submodule update --init --recursive
 	@git submodule foreach --recursive git clean -xfd
 
 install_build_dependencies:
 
 	@wget -qO- https://deb.nodesource.com/setup_6.x | sudo -E bash -
-	@sudo ${APTGETCMD} ${APTGETOPTS} update
 	@sudo ${APTGETCMD} ${APTGETOPTS} install ${BUILDPKGLIST}
 
 build:
@@ -52,7 +51,7 @@ build:
 	@cd bundle/vimproc && make
 	@cd bundle/YouCompleteMe && export GOPATH=/usr/lib/go \
 		&& python install.py --clang-completer --gocode-completer \
-		--tern-completer --system-libclang --system-boost
+		--tern-completer
 	@convert -background None subliminal-vim.svg subliminal-vim.png
 
 copy:
