@@ -1,25 +1,20 @@
-# Subliminal Vim
+# Subliminal Vim (v0.1~a1)
 
 > A drop-in replacement for Sublime Text based on vim and urxvt
 
-[![Join the chat at https://gitter.im/LuisAlejandro/subliminal-vim](https://badges.gitter.im/LuisAlejandro/subliminal-vim.svg)](https://gitter.im/LuisAlejandro/subliminal-vim)
+<img align="right" height="200" src="https://cloud.githubusercontent.com/assets/324683/14374725/0a483732-fd23-11e5-9b56-b0e280b20760.png">
 
-<img align="right" height="260" src="https://cloud.githubusercontent.com/assets/324683/14374725/0a483732-fd23-11e5-9b56-b0e280b20760.png">
+**Attention: this in an alpha release. Don't use it on production environments as
+you will probably experience bugs.**
 
----
-
-Attention: this in an alpha release. Don't use it on production environments as
-you will probably experience bugs.
-
-Subliminal Vim is a group of Vim plugins and configurations designed to resemble
+*Subliminal Vim* is a group of Vim plugins and configurations designed to resemble
 the appeareance and functionality of Sublime Text. Its main purpose is to make
 users from Sublime to be more comfortable using Vim and perhaps encourage them
 to switch IDE environments in the future.
 
-
-Subliminal Vim needs a graphical interface to work because we need urxvt for
+*Subliminal Vim* needs a graphical interface to work because we need urxvt for
 proper key shorcuts, but in the future this might change. This means it won't
-work on server environments, sorry. Subliminal Vim ships as a separate binary
+work on server environments, sorry. *Subliminal Vim* ships as a separate binary
 and does not integrate with Vim (yet). See [Usage](#usage) for details.
 
 Also, for now we are only supporting Debian-based systems on the installation

@@ -64,19 +64,6 @@ function! VSearchReplaceFile() range
     let @" = l:saved_reg
 endfunction
 
-
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-function! s:CloseIfOnlyNerdTreeLeft()
-	if exists("t:NERDTreeBufName")
-		if bufwinnr(t:NERDTreeBufName) != -1
-			if winnr("$") == 1
-				q
-			endif
-		endif
-	endif
-endfunction
-
-
 " show the project name and relative path to the current file
 function! ProjectFilePath(short)
     let l:path = fnamemodify(expand('%'), ':p:h')
