@@ -1,8 +1,8 @@
-# Subliminal Vim (v0.1~a1)
+<img align="right" height="100" src="https://cloud.githubusercontent.com/assets/324683/14374725/0a483732-fd23-11e5-9b56-b0e280b20760.png">
+
+# Subliminal Vim 0.1a1
 
 > A drop-in replacement for Sublime Text based on vim and urxvt
-
-<img align="right" height="200" src="https://cloud.githubusercontent.com/assets/324683/14374725/0a483732-fd23-11e5-9b56-b0e280b20760.png">
 
 **Attention: this in an alpha release. Don't use it on production environments as
 you will probably experience bugs.**
@@ -22,6 +22,7 @@ script, but you might want to try installing on a different OS and tell us how
 you you did it, or submit a
 [greatly appreciated PR](https://github.com/LuisAlejandro/subliminal-vim/pulls).
 
+![Screenshot](https://cloud.githubusercontent.com/assets/324683/18112460/b9c94b3a-6ef5-11e6-9d11-43df8c950f87.png "Screenshot")
 
 ## Features
 
@@ -42,7 +43,7 @@ for more information.
 script to run properly. Open a root terminal and type the following command:
 
     ```
-    apt-get install make sudo
+    apt-get install make sudo git
     ```
 
 2. Next, we have to clone Sublime Vim repository from github with the following
