@@ -18,6 +18,82 @@
 "   along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
+function! CloseFile()
+    if &mod
+        let l:message = 'Do you want to save changes before closing?'
+        let l:windowcmd = 'zenity --question --no-wrap'
+        let l:windowcmd .= ' --text '''.l:message.''' '
+        let l:windowcmd .= ' --extra-button "Close without saving"'
+        let l:windowcmd .= ' --ok-label "Save"'
+        let l:windowcmd .= ' --cancel-label "Cancel"'
+        let l:windowcmd .= ' --title "Save?" --modal'
+        let l:windowcmd .= ' --window-icon /usr/share/icons/subliminal-vim.png'
+        let l:windowcmd .= ' 2>/dev/null'
+        let l:question = system(l:windowcmd)
+
+        " If empty, user chose Save or Cancel
+        if empty(l:question)
+            " If v:shell_error == 0, user chose Save
+            if !v:shell_error
+                call SaveFile()
+            else
+                return
+            endif
+        endif
+    endif
+
+    execute ':bp!'
+    execute ':bw!#'
+endfunction
+
+
+function! SaveFile()
+    if empty(expand('%:t'))
+        call SaveFileAs()
+    else
+        execute ':w!'
+        execute ':startinsert!'
+    endif
+endfunction
+
+
+function! SaveFileAs()
+    let l:windowcmd = 'zenity --file-selection'
+    let l:windowcmd .= ' --save'
+    let l:windowcmd .= ' --title "Enter filename" --modal'
+    let l:windowcmd .= ' --window-icon /usr/share/icons/subliminal-vim.png'
+    let l:windowcmd .= ' 2>/dev/null | xargs printf'
+    let l:savefile = system(l:windowcmd)
+
+    if !empty(glob(l:savefile))
+        let l:filename = split(l:savefile, '/')[-1]
+        let l:folder = split(l:savefile, '/')[-2]
+        let l:existsmessage = 'A file named "'.l:filename.'" already exists'
+        let l:existsmessage .= ' in "'.l:folder.'".\n\n'
+        let l:existsmessage .= ' Do you want to replace it?'
+        let l:windowcmd = 'zenity --question --no-wrap'
+        let l:windowcmd .= ' --text '''.l:existsmessage.''' '
+        let l:windowcmd .= ' --title "Replace?" --modal'
+        let l:windowcmd .= ' --window-icon /usr/share/icons/subliminal-vim.png'
+        let l:windowcmd .= ' 2>/dev/null'
+        let l:question = system(l:windowcmd)
+    endif
+
+    if !v:shell_error
+        execute ':w! '.l:savefile
+    endif
+    execute ':startinsert!'
+endfunction
+
+function! OpenFile()
+    let l:windowcmd = 'zenity --file-selection'
+    let l:windowcmd .= ' --title "Open file" --modal'
+    let l:windowcmd .= ' --window-icon /usr/share/icons/subliminal-vim.png'
+    let l:windowcmd .= ' 2>/dev/null'
+    let l:openfile = system(l:windowcmd)
+    execute ':e '.l:openfile
+endfunction
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar

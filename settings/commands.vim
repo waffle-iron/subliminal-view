@@ -18,3 +18,4 @@
 "   along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 autocmd FileType nerdtree setlocal nolist
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

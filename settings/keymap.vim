@@ -4,12 +4,12 @@
 "   Please refer to CONTRIBUTORS.md for a complete list of Copyright
 "   holders.
 "
-"   Tribus is free software: you can redistribute it and/or modify
+"   Subliminal Vim is free software: you can redistribute it and/or modify
 "   it under the terms of the GNU General Public License as published by
-"   the Free Software Foundation, either version 3 of the License, or
+"   the Free Software Foundation, either version 4 of the License, or
 "   (at your option) any later version.
 "
-"   Tribus is distributed in the hope that it will be useful,
+"   Subliminal Vim is distributed in the hope that it will be useful,
 "   but WITHOUT ANY WARRANTY; without even the implied warranty of
 "   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 "   GNU General Public License for more details.
@@ -18,112 +18,135 @@
 "   along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
+" Interface
+" ----------------------------------------------------------------------------
 
-" Sublime Text key noremappings
+" Exit
+map <silent> <C-q> :call system('pkill -P $(pgrep -d, urxvt)')<CR>
+map! <silent> <C-q> <Esc>:call system('pkill -P $(pgrep -d, urxvt)')<CR>
 
-map <Esc>[65;5~ <C-S-a>
-map <Esc>[66;5~ <C-S-b>
-map <Esc>[67;5~ <C-S-c>
-map <Esc>[68;5~ <C-S-d>
-map <Esc>[69;5~ <C-S-e>
-map <Esc>[70;5~ <C-S-f>
-map <Esc>[71;5~ <C-S-g>
-map <Esc>[72;5~ <C-S-h>
-map <Esc>[73;5~ <C-S-i>
-map <Esc>[74;5~ <C-S-j>
-map <Esc>[75;5~ <C-S-k>
-map <Esc>[76;5~ <C-S-l>
-map <Esc>[77;5~ <C-S-m>
-map <Esc>[78;5~ <C-S-n>
-map <Esc>[79;5~ <C-S-o>
-map <Esc>[80;5~ <C-S-p>
-map <Esc>[81;5~ <C-S-q>
-map <Esc>[82;5~ <C-S-r>
-map <Esc>[83;5~ <C-S-s>
-map <Esc>[84;5~ <C-S-t>
-map <Esc>[85;5~ <C-S-u>
-map <Esc>[86;5~ <C-S-v>
-map <Esc>[87;5~ <C-S-w>
-map <Esc>[88;5~ <C-S-x>
-map <Esc>[89;5~ <C-S-y>
-map <Esc>[90;5~ <C-S-z>
+" New window
+map <silent> <Esc>[78;5~ :call system('subliminal-vim')<CR>
+map! <silent> <Esc>[78;5~ <Esc>:call system('subliminal-vim')<CR>
+
+" Close window
+map <silent> <Esc>[87;5~ :q!<CR>
+map! <silent> <Esc>[87;5~ <Esc>:q!<CR>
+
+" Open file
+map <silent> <C-o> :call OpenFile()<CR>
+map! <silent> <C-o> <Esc>:call OpenFile()<CR>
 
 " Open last closed tab
-noremap <silent> <Esc>[84;5~ :vs<BAR>:b#<CR>
+map <silent> <Esc>[84;5~ :e#<CR>
+map! <silent> <Esc>[84;5~ <Esc>:e#<CR>
 
+" Open a new unnamed file
+map <silent> <C-n> :enew<CR>
+map! <silent> <C-n> <Esc>:enew<CR>
 
-" Text editing
-noremap <silent> <C-a> ggVG
+" Save file
+map <silent> <C-s> :call SaveFile()<CR>
+map! <silent> <C-s> <Esc>:call SaveFile()<CR>
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nnoremap <silent> <C-S-Down> mz:m+<cr>`z
-vnoremap <silent> <C-S-Down> :m'>+<cr>`<my`>mzgv`yo`z
-nnoremap <silent> <C-S-Up> mz:m-2<cr>`z
-vnoremap <silent> <C-S-Up> :m'<-2<cr>`>my`<mzgv`yo`z
+" Save file as
+map <silent> <Esc>[83;5~ :call SaveFileAs()<CR>
+map! <silent> <Esc>[83;5~ <Esc>:call SaveFileAs()<CR>
 
-" duplicate the selection
-nnoremap <silent> <Esc>[68;5~ yyp
-vnoremap <silent> <Esc>[68;5~ yp
-inoremap <silent> <Esc>[68;5~ <Esc>yypi
+" Close file
+map <silent> <C-w> :call CloseFile()<CR>
+map! <silent> <C-w> <Esc>:call CloseFile()<CR>
+map <silent> <Esc>[1;5S :call CloseFile()<CR>
+map! <silent> <Esc>[1;5S <Esc>:call CloseFile()<CR>
 
-" indent / deindent after selecting the text with (⇧ v), (.) to repeat.
-vnoremap <silent> <Tab> >gv
-nnoremap <silent> <Tab> >>
-vnoremap <silent> <S-Tab> <gv
-nnoremap <silent> <S-Tab> <<
+" Show/Hide sidebar
+map <silent> <C-k><C-b> :NERDTreeToggle<CR>
+map! <silent> <C-k><C-b> <Esc>:NERDTreeToggle<CR>
 
-" Cut, Paste, Copy
-vnoremap <silent> <C-x> "xygvd:call system('xsel -i -b', @x)<CR>v
-nnoremap <silent> <C-x> "xdd:call system('xsel -i -b', @x)<CR>
-inoremap <silent> <C-x> <Esc>"xdd:call system('xsel -i -b', @x)<CR>i
+" Distraction free mode
+map <silent> <Esc>[23;2~ :Goyo<CR>
+map! <silent> <Esc>[23;2~ <Esc>:Goyo<CR>
 
-vnoremap <silent> <C-v> :let @x=system('xsel -b')<CR>"xpv
-nnoremap <silent> <C-v> :let @x=system('xsel -b')<CR>"xp
-inoremap <silent> <C-v> <Esc>:let @x=system('xsel -b')<CR>"xpi
+" Navigate between tabs
+map <silent> <Esc>1              <Plug>AirlineSelectTab1
+map <silent> <Esc>2              <Plug>AirlineSelectTab2
+map <silent> <Esc>3              <Plug>AirlineSelectTab3
+map <silent> <Esc>4              <Plug>AirlineSelectTab4
+map <silent> <Esc>5              <Plug>AirlineSelectTab5
+map <silent> <Esc>6              <Plug>AirlineSelectTab6
+map <silent> <Esc>7              <Plug>AirlineSelectTab7
+map <silent> <Esc>8              <Plug>AirlineSelectTab8
+map <silent> <Esc>9              <Plug>AirlineSelectTab9
+map <silent> <Esc>[27;5;9~       <Plug>AirlineSelectPrevTab
+map <silent> <Esc>[27;6;9~       <Plug>AirlineSelectNextTab
 
-vnoremap <silent> <C-c> "xy:call system('xsel -i -b', @x)<CR>v
-nnoremap <silent> <C-c> "xyy:call system('xsel -i -b', @x)<CR>
-inoremap <silent> <C-c> <Esc>"xyy:call system('xsel -i -b', @x)<CR>i
-
-" Undo, Redo
-nnoremap <silent> <C-z> :undo<CR>
-inoremap <silent> <C-z> <Esc>:undo<CR>
-vnoremap <silent> <C-z> <Esc>:undo<CR>
-nnoremap <silent> <C-y> :redo<CR>
-inoremap <silent> <C-y> <Esc>:redo<CR>
-vnoremap <silent> <C-y> <Esc>:redo<CR>
-
-
-" Buffers (tabs) ----------------------------------------------------
-
-" Save tab
-nnoremap <silent> <C-s> :w<CR>
-inoremap <silent> <C-s> <Esc>:w<CR>
-vnoremap <silent> <C-s> <Esc>:w<CR>
+map! <silent> <Esc>1              <Esc><Plug>AirlineSelectTab1
+map! <silent> <Esc>2              <Esc><Plug>AirlineSelectTab2
+map! <silent> <Esc>3              <Esc><Plug>AirlineSelectTab3
+map! <silent> <Esc>4              <Esc><Plug>AirlineSelectTab4
+map! <silent> <Esc>5              <Esc><Plug>AirlineSelectTab5
+map! <silent> <Esc>6              <Esc><Plug>AirlineSelectTab6
+map! <silent> <Esc>7              <Esc><Plug>AirlineSelectTab7
+map! <silent> <Esc>8              <Esc><Plug>AirlineSelectTab8
+map! <silent> <Esc>9              <Esc><Plug>AirlineSelectTab9
+map! <silent> <Esc>[27;5;9~       <Esc><Plug>AirlineSelectPrevTab
+map! <silent> <Esc>[27;6;9~       <Esc><Plug>AirlineSelectNextTab
 
 " Save all tabs
-nnoremap <silent> <C-e> :wa<CR>
-inoremap <silent> <C-e> <Esc>:wa<CR>
-vnoremap <silent> <C-e> <Esc>:wa<CR>
+inoremap <silent> <C-e> <Esc>:wa!<CR>
 
-" Close tab
-nnoremap <silent> <C-w> :bp <BAR> bd #<CR>
-inoremap <silent> <C-w> <Esc>:bp <BAR> bd #<CR>
-vnoremap <silent> <C-w> <Esc>:bp <BAR> bd #<CR>
 
-" Close all tabs
-nnoremap <silent> <C-q> :bufdo bd<CR>
-inoremap <silent> <C-q> <Esc>:bufdo bd<CR>
-vnoremap <silent> <C-q> <Esc>:bufdo bd<CR>
+" Select all document
+inoremap <silent> <C-a> <Esc>ggVG
 
-" Move back and forth through previous and next tabs
-" with ,z and ,x
-noremap <silent> <leader>z :bprevious<CR>
-noremap <silent> <leader>x :bnext<CR>
 
-" To open a new empty tab
-nnoremap <silent> <leader>n :e<SPACE>
+" Select with Shift + cursor keys
+inoremap <silent> <S-Up>        <Esc>v<Up>
+vnoremap <silent> <S-Up>        <Up>
+inoremap <silent> <S-Down>      <Esc>v<Down>
+vnoremap <silent> <S-Down>      <Down>
+inoremap <silent> <S-Left>      <Esc>v<Left>
+vnoremap <silent> <S-Left>      <Left>
+inoremap <silent> <S-Right>     <Esc>v<Right>
+vnoremap <silent> <S-Right>     <Right>
 
+" Move a block or line of text up or down
+inoremap <silent> <Esc>[1;6A    <Esc>:m-2<CR>
+vnoremap <silent> <Esc>[1;6A    :m'<-2<CR>`>my`<mzgv`yo`z
+inoremap <silent> <Esc>[1;6B    <Esc>:m+<CR>
+vnoremap <silent> <Esc>[1;6B    :m'>+<CR>`<my`>mzgv`yo`z
+
+" Duplicate the selection
+inoremap <silent> <Esc>[68;5~   <Esc>yypi
+vnoremap <silent> <Esc>[68;5~   yp
+
+" Indent a line or block of code
+inoremap <silent> <Tab>         <Esc>>>
+vnoremap <silent> <Tab>         >gv
+
+" Deindent a line or block of code
+inoremap <silent> <S-Tab>       <Esc><<
+vnoremap <silent> <S-Tab>       <gv
+
+" Copy
+inoremap <silent> <C-c>         <Esc>"xyy:call system('xsel -i -b', @x)<CR>i
+vnoremap <silent> <C-c>         "xy:call system('xsel -i -b', @x)<CR>i
+
+" Cut
+inoremap <silent> <C-x>         <Esc>"xdd:call system('xsel -i -b', @x)<CR>i
+vnoremap <silent> <C-x>         "xygvd:call system('xsel -i -b', @x)<CR>i
+
+" Paste
+inoremap <silent> <C-v>         <Esc>:let @x=system('xsel -b')<CR>"xpi
+vnoremap <silent> <C-v>         :let @x=system('xsel -b')<CR>"xpi
+
+" Undo
+inoremap <silent> <C-z> <Esc>:undo<CR>
+vnoremap <silent> <C-z> <Esc>:undo<CR>
+
+" Redo
+inoremap <silent> <C-y> <Esc>:redo<CR>
+vnoremap <silent> <C-y> <Esc>:redo<CR>
 " Windows (splits) --------------------------------------------------
 
 " Create window splits easier
@@ -151,14 +174,5 @@ nnoremap <silent> <C-Right> <C-w>l<C-w>_
 nnoremap <silent> <leader>qc :cclose<CR>
 nnoremap <silent> <leader>qo :copen<CR>
 
-
-" Navigation =================================================================
-
-" Make 0 go to the first character rather than the beginning
-" of the line. When we're programming, we're almost always
-" interested in working with text rather than empty space. If
-" you want the traditional beginning of line, use ^
-nnoremap 0 ^
-nnoremap ^ 0
 
 
