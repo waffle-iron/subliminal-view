@@ -22,8 +22,8 @@
 " ----------------------------------------------------------------------------
 
 " Exit
-map <silent> <C-q> :call system('pkill -P $(pgrep -d, urxvt)')<CR>
-map! <silent> <C-q> <Esc>:call system('pkill -P $(pgrep -d, urxvt)')<CR>
+map <silent> <C-q> :call system('pkill -f ycmd')<BAR>:call system('pkill -P $(pgrep -d, urxvt)')<CR>
+map! <silent> <C-q> <Esc>:call system('pkill -f ycmd')<BAR>:call system('pkill -P $(pgrep -d, urxvt)')<CR>
 
 " New window
 map <silent> <Esc>[78;5~ :call system('subliminal-vim')<CR>
@@ -66,6 +66,20 @@ map! <silent> <C-k><C-b> <Esc>:NERDTreeToggle<CR>
 " Distraction free mode
 map <silent> <Esc>[23;2~ :Goyo<CR>
 map! <silent> <Esc>[23;2~ <Esc>:Goyo<CR>
+
+" Undo
+map! <silent> <C-z> <Esc>:undo<BAR>:star!<CR>
+map <silent> <C-z> :undo<BAR>:star!<CR>
+map! <silent> <C-u> <Esc>:undo<BAR>:star!<CR>
+map <silent> <C-u> :undo<BAR>:star!<CR>
+
+" Redo
+map! <silent> <C-y> <Esc>:redo<BAR>:star!<CR>
+map <silent> <C-y> :redo<BAR>:star!<CR>
+map! <silent> \033[90;5~ <Esc>:redo<BAR>:star!<CR>
+map <silent> \033[90;5~ :redo<BAR>:star!<CR>
+map! <silent> \033[85;5~ <Esc>:redo<BAR>:star!<CR>
+map <silent> \033[85;5~ :redo<BAR>:star!<CR>
 
 " Navigate between tabs
 map <silent> <Esc>1              <Plug>AirlineSelectTab1
@@ -111,42 +125,35 @@ inoremap <silent> <S-Right>     <Esc>v<Right>
 vnoremap <silent> <S-Right>     <Right>
 
 " Move a block or line of text up or down
-inoremap <silent> <Esc>[1;6A    <Esc>:m-2<CR>
-vnoremap <silent> <Esc>[1;6A    :m'<-2<CR>`>my`<mzgv`yo`z
-inoremap <silent> <Esc>[1;6B    <Esc>:m+<CR>
-vnoremap <silent> <Esc>[1;6B    :m'>+<CR>`<my`>mzgv`yo`z
+map! <silent> <Esc>[1;6A    <Esc>:m-2<BAR>:star!<CR>
+map <silent> <Esc>[1;6A    :m'<-2<CR>`>my`<mzgv`yo`z
+map! <silent> <Esc>[1;6B    <Esc>:m+<BAR>:star!<CR>
+map <silent> <Esc>[1;6B    :m'>+<CR>`<my`>mzgv`yo`z
 
 " Duplicate the selection
-inoremap <silent> <Esc>[68;5~   <Esc>yypi
-vnoremap <silent> <Esc>[68;5~   yp
+map! <silent> <Esc>[68;5~   <Esc>yyp<BAR>:star!
+map <silent> <Esc>[68;5~   yp
 
 " Indent a line or block of code
-inoremap <silent> <Tab>         <Esc>>>
-vnoremap <silent> <Tab>         >gv
+imap <silent> <Tab>         <Esc>>>
+map <silent> <Tab>         >gv
 
 " Deindent a line or block of code
-inoremap <silent> <S-Tab>       <Esc><<
-vnoremap <silent> <S-Tab>       <gv
+map! <silent> <S-Tab>       <Esc><<
+map <silent> <S-Tab>       <gv
 
 " Copy
-inoremap <silent> <C-c>         <Esc>"xyy:call system('xsel -i -b', @x)<CR>i
-vnoremap <silent> <C-c>         "xy:call system('xsel -i -b', @x)<CR>i
+map! <silent> <C-c>         <Esc>"xyy:call system('xclip -i -sel clipboard', @x)<BAR>:star!<CR>
+map <silent> <C-c>         "xy:call system('xclip -i -sel clipboard', @x)<BAR>:star!<CR>
 
 " Cut
-inoremap <silent> <C-x>         <Esc>"xdd:call system('xsel -i -b', @x)<CR>i
-vnoremap <silent> <C-x>         "xygvd:call system('xsel -i -b', @x)<CR>i
+map! <silent> <C-x>         <Esc>"xdd:call system('xclip -i -sel clipboard', @x)<BAR>:star!<CR>
+map <silent> <C-x>         "xygvd:call system('xclip -i -sel clipboard', @x)<BAR>:star!<CR>
 
 " Paste
-inoremap <silent> <C-v>         <Esc>:let @x=system('xsel -b')<CR>"xpi
-vnoremap <silent> <C-v>         :let @x=system('xsel -b')<CR>"xpi
+map! <silent> <C-v>         <Esc>:let @x=system('xclip -o -sel clipboard')<CR>"xp<BAR>:star!<CR>
+map <silent> <C-v>         :let @x=system('xclip -o -sel clipboard')<CR>"xp<BAR>:star!<CR>
 
-" Undo
-inoremap <silent> <C-z> <Esc>:undo<CR>
-vnoremap <silent> <C-z> <Esc>:undo<CR>
-
-" Redo
-inoremap <silent> <C-y> <Esc>:redo<CR>
-vnoremap <silent> <C-y> <Esc>:redo<CR>
 " Windows (splits) --------------------------------------------------
 
 " Create window splits easier

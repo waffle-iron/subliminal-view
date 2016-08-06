@@ -28,7 +28,7 @@ you you did it, or submit a
 
 * Sublime Text key shorcuts.
 * Syntax highlighting of popular languages.
-* Integrated linting for Python, Perl, Javascript, Go, Haskell & more.
+* Integrated linting and autocomplete for Python, Perl, Ruby, Javascript, Go, Haskell & more.
 
 
 ## Known bugs - work in progess
@@ -39,29 +39,19 @@ for more information.
 
 ## Installation
 
-1. First we're going to install the dependencies needed for the installation
-script to run properly. Open a root terminal and type the following command:
+First make sure that you have `sudo` and `curl` installed. If not, you can install it by  opening
+a root terminal and typing the following command:
 
-    ```
-    apt-get install make sudo git
-    ```
+```bash
+apt-get install sudo curl
+```
 
-2. Next, we have to clone Sublime Vim repository from github with the following
-command. Remember to previously put the prompt on an appropiate folder and be
-logged in with your user.
+Then, open a user terminal and start the installation process with the following command.
+This will take a few minutes to complete depending on your internet connection speed.
 
-    ```
-    git clone https://github.com/LuisAlejandro/subliminal-vim
-
-    ```
-
-3. Finally, start the installation process with the following commands. This
-will take a few minutes to complete depending on your internet connection speed.
-
-    ```
-    make
-    make install
-    ```
+```bash
+bash <(curl -sLo- https://raw.githubusercontent.com/LuisAlejandro/subliminal-vim/development/setup.sh)
+```
 
 
 ## Usage
@@ -76,14 +66,14 @@ There is no contextual menu (yet) when you click the right button.
 
 | Shortcut | Function |
 | --- | --- |
+| `Ctrl-o` | Open document |
 | `Ctrl-s` | Save document |
 | `Ctrl-c` | Copy a block or single line of code |
 | `Ctrl-x` | Cut a block or single line of code |
 | `Ctrl-v` | Paste a block or single line of code |
 | `Ctrl-z` | Undo last action |
 | `Ctrl-y` | Redo last action |
-| `Ctrl-w` | Close current tab |
-| `Ctrl-e` | Save all open documents |
+| `Ctrl-w` | Close current file |
 | `Ctrl-Shift-7` | Comment a block or single line of code |
 | `Ctrl-Shift-Up` | Move a block or single line up |
 | `Ctrl-Shift-Down` | Move a block or single line down |

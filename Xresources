@@ -24,8 +24,8 @@ URxvt*.internalborder:          0
 URxvt*.transparent:             false
 URxvt*.iso14755:                false
 URxvt*.iso14755_52:             false
-URxvt*.font:                    xft:DejaVu Sans Mono for Powerline:style=Book:size=10
-URxvt*.iconFile:                /usr/share/icons/subliminal-vim.png
+URxvt*.font:                    xft:DejaVuSansMonoForPowerline Nerd Font:style=Book:size=10, \
+                                xft:DejaVuSansMonoForPowerline Nerd Font:style=Book:size=8
 URxvt*.iconName:                subliminal-vim
 URxvt*.title:                   Subliminal Vim
 URxvt*.letterSpace:             -1.0
@@ -64,11 +64,9 @@ URxvt*.color15:                 #eeeeee
 
 !--[ Extensions ]--------------------------------
 
-URxvt.perl-ext-common:          fullscreen
+URxvt.perl-ext-common:          fullscreen,contextual-menu
 URxvt.keysym.F11:               perl:fullscreen:switch
 
-! emulate XTerm for proper recognition of key combinations in Vim
-! original source: https://github.com/sunaku/home/
 URxvt.keysym.S-F1:              \033[1;2P
 URxvt.keysym.S-F2:              \033[1;2Q
 URxvt.keysym.S-F3:              \033[1;2R
