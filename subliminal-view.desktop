@@ -1,14 +1,14 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Subliminal Vim
+Name=Subliminal View
 GenericName=Text Editor
 Comment=Text Editor
-X-GNOME-FullName=Subliminal Vim
-Exec=subliminal-vim %u
+X-GNOME-FullName=Subliminal View
+Exec=subliminal-view %F
 Terminal=false
-Icon=~/.local/share/icons/subliminal-vim.png
+Icon=subliminal-view
 Type=Application
 Categories=TextEditor;IDE;Development
 MimeType=text/plain;
 StartupNotify=true
-StartupWMClass=subliminal-vim
+StartupWMClass=subliminal-view

@@ -1,6 +1,6 @@
 MATCHALL "Jump to symbol definition      " exec ""
 ----
-MATCHALL "Copy" exec ""
+MATCHALL "Copy" send "\033c"
 MATCHALL "Cut" exec ""
 MATCHALL "Paste" exec ""
 ----

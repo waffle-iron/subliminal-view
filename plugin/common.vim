@@ -1,15 +1,15 @@
-"   This file is part of Sublime Vim
-"   Copyright (c) 2016, Sublime Vim Developers
+"   This file is part of Subliminal View
+"   Copyright (c) 2016, Subliminal View Developers
 "
 "   Please refer to CONTRIBUTORS.md for a complete list of Copyright
 "   holders.
 "
-"   Subliminal Vim is free software: you can redistribute it and/or modify
+"   Subliminal View is free software: you can redistribute it and/or modify
 "   it under the terms of the GNU General Public License as published by
 "   the Free Software Foundation, either version 3 of the License, or
 "   (at your option) any later version.
 "
-"   Subliminal Vim is distributed in the hope that it will be useful,
+"   Subliminal View is distributed in the hope that it will be useful,
 "   but WITHOUT ANY WARRANTY; without even the implied warranty of
 "   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 "   GNU General Public License for more details.
@@ -34,7 +34,7 @@ set hidden                                      " Tabs can exist in the
 set lazyredraw                                  " Defer redraw (faster)
 set noshowcmd                                   " Dont show command in cmd bar
 set noshowmode                                  " Dont show edit mode in cmd bar
-set nomore		                                " Hide the --more-- tag
+set nomore                                      " Hide the --more-- tag
 set wildmenu                                    " Enable completion in cmd bar
 set wildmode=list:longest                       " Mode for completion in cmd bar
 set number                                      " Show line numbers
@@ -54,7 +54,7 @@ colorscheme subliminal                          " color scheme
 
 set title
 set icon
-let &titlestring='%F (%{ProjectFilePath(1)}) - Subliminal Vim'
+let &titlestring='%F (%{ProjectFilePath(1)}) - Subliminal View'
 let &iconstring=&titlestring
 
 " Mouse
@@ -65,8 +65,8 @@ set mousemodel=popup                            " Use right click to initiate po
                                                 " but that's just what we want
 set virtualedit=onemore                         " Allow for cursor beyond last character
 let &t_SI = "\<Esc>[5 q"                        " Blinking cursor (insert)
-let &t_SR = "\<Esc>[5 q"                        " Blinking cursor (normal)
-let &t_EI = "\<Esc>[2 q"                        " Underline cursor (replace)
+let &t_SR = "\<Esc>[4 q"                        " Underline cursor (replace)
+let &t_EI = "\<Esc>[2 q"                        " Blinking cursor (normal)
 
 " Keyboard
 
@@ -100,26 +100,26 @@ set autowriteall                                " Automatically save before :nex
 " Viminfo file
 
 set viminfo^=%
-set viminfo+=n~/.subliminal-vim/viminfo
+set viminfo+=n~/.config/subliminal-view/viminfo
 
 " Ctags file
 
-set tags=~/.subliminal-vim/vimtags
+set tags=~/.config/subliminal-view/vimtags
 
 " Swap files dir
 
 set swapfile
 set updatecount=1
-set directory=~/.subliminal-vim/recovery/
+set directory=~/.config/subliminal-view/recovery/
 
 " Backups dir
 
 set backup
 set writebackup
-set backupdir=~/.subliminal-vim/backups/
+set backupdir=~/.config/subliminal-view/backups/
 
 " Undo history dir
 
 set history=1000
 set undofile
-set undodir=~/.subliminal-vim/undo/
+set undodir=~/.config/subliminal-view/undo/

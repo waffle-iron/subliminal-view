@@ -1,5 +1,22 @@
-" Vim color file
-" Converted from Textmate theme Monokai using Coloration v0.3.2 (http://github.com/sickill/coloration)
+"   This file is part of Subliminal View
+"   Copyright (c) 2016, Subliminal View Developers
+"
+"   Please refer to CONTRIBUTORS.md for a complete list of Copyright
+"   holders.
+"
+"   Subliminal View is free software: you can redistribute it and/or modify
+"   it under the terms of the GNU General Public License as published by
+"   the Free Software Foundation, either version 3 of the License, or
+"   (at your option) any later version.
+"
+"   Subliminal View is distributed in the hope that it will be useful,
+"   but WITHOUT ANY WARRANTY; without even the implied warranty of
+"   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+"   GNU General Public License for more details.
+"
+"   You should have received a copy of the GNU General Public License
+"   along with this program. If not, see <http://www.gnu.org/licenses/>.
+
 
 set background=dark
 highlight clear
@@ -107,3 +124,34 @@ hi cssClassName ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui
 hi cssValueLength ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi cssCommonAttr ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
 hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+
+
+
+hi NERDTreePart ctermfg=238 ctermbg=NONE
+hi NERDTreePartFile ctermfg=238 ctermbg=NONE
+hi NERDTreeExecFile ctermfg=238 ctermbg=NONE
+hi NERDTreeDirSlash ctermfg=238 ctermbg=NONE
+hi NERDTreeBookmarksHeader ctermfg=238 ctermbg=NONE
+hi NERDTreeBookmarksLeader ctermfg=238 ctermbg=NONE
+hi NERDTreeBookmarkName ctermfg=238 ctermbg=NONE
+hi NERDTreeBookmark ctermfg=238 ctermbg=NONE
+hi NERDTreeHelp ctermfg=238 ctermbg=NONE
+hi NERDTreeHelpKey ctermfg=238 ctermbg=NONE
+hi NERDTreeHelpCommand ctermfg=238 ctermbg=NONE
+hi NERDTreeHelpTitle ctermfg=238 ctermbg=NONE
+hi NERDTreeToggleOn ctermfg=238 ctermbg=NONE
+hi NERDTreeToggleOff ctermfg=238 ctermbg=NONE
+hi NERDTreeLinkTarget ctermfg=238 ctermbg=NONE
+hi NERDTreeLinkFile ctermfg=238 ctermbg=NONE
+hi NERDTreeLinkDir ctermfg=238 ctermbg=NONE
+hi NERDTreeDir ctermfg=238 ctermbg=NONE
+hi NERDTreeUp ctermfg=238 ctermbg=NONE
+hi NERDTreeFile ctermfg=238 ctermbg=NONE
+hi NERDTreeCWD ctermfg=238 ctermbg=NONE
+hi NERDTreeOpenable ctermfg=238 ctermbg=NONE
+hi NERDTreeClosable ctermfg=238 ctermbg=NONE
+hi NERDTreeIgnore ctermfg=238 ctermbg=NONE
+hi NERDTreeRO ctermfg=238 ctermbg=NONE
+hi NERDTreeBookmark ctermfg=238 ctermbg=NONE
+hi NERDTreeFlags ctermfg=238 ctermbg=NONE
+hi NERDTreeCurrentNode ctermfg=238 ctermbg=NONE

@@ -18,30 +18,22 @@
 "   along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
-set runtimepath=$VIMRUNTIME,~/.config/subliminal-view/plug
+function! PlugIsInstalled(plugin)
+    if has_key(g:plugs, a:plugin) && isdirectory(g:plugs[a:plugin].dir)
+        return 1
+    endif
+    return 0
+endfunction
 
-call plug#begin('~/.config/subliminal-view/plugins')
+function! AutoPlugInstall()
+    if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)')) && exists(':PlugInstall')
+        PlugInstall
+        call system('nohup subliminal-view >/dev/null 2>&1 &')
+        qall
+    endif
+endfunction
 
-Plug 'LuisAlejandro/subliminal-view', {'dir': '~/.config/subliminal-view/app', 'do': './configure.sh', 'branch': 'development'}
-Plug 'LuisAlejandro/vim-autoswap'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-Plug 'tomtom/tcomment_vim'
-Plug 'kristijanhusak/vim-multiple-cursors'
-Plug 'junegunn/goyo.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'dkprice/vim-easygrep'
-Plug 'scrooloose/syntastic'
-Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/vimproc', {'do': 'make'}
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neocomplete'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'ryanoasis/vim-devicons'
-
-call plug#end()
+augroup auto_plug_install
+    autocmd!
+    autocmd VimEnter * call AutoPlugInstall()
+augroup END
