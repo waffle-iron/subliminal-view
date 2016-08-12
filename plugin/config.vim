@@ -21,8 +21,6 @@
 " SEARCH FUNCTIONS
 " ----------------------------------------------------------------------------
 
-let $KIVY_NO_CONSOLELOG='1'
-let $KIVY_NO_FILELOG='1'
 
 let g:sv_py_path = '/usr/bin/python'
 let g:sv_py_search = '~/.config/subliminal-view/app/ui/search.py'

@@ -20,41 +20,41 @@
 " Color palette
 let s:t_n_bg    = 234           " Background for normal mode and file position blocks
 let s:t_n_fg    = 252           " Foreground for normal mode and file position blocks
-let s:g_n_bg    = '#5F87FF'
-let s:g_n_fg    = '#FFFFFF'
+let s:g_n_bg    = '#1C1C1C'
+let s:g_n_fg    = '#D0D0D0'
 
 let s:t_c1_bg   = 237           " Background for branch and file format blocks
 let s:t_c1_fg   = 252           " Foreground for branch and file format blocks
-let s:g_c1_bg   = '#5F5F5F'
-let s:g_c1_fg   = '#AFAF87'
+let s:g_c1_bg   = '#3A3A3A'
+let s:g_c1_fg   = '#D0D0D0'
 
 let s:t_c2_bg   = 239           " Background for middle block
 let s:t_c2_fg   = 252           " Foreground for middle block
-let s:g_c2_bg   = '#1C1C1C'
-let s:g_c2_fg   = '#F5F5F5'
+let s:g_c2_bg   = '#4E4E4E'
+let s:g_c2_fg   = '#D0D0D0'
 
 let s:t_i_bg    = 234            " Background for insert mode and file position blocks
 let s:t_i_fg    = 252            " Foreground for insert mode and file position blocks
-let s:g_i_bg    = '#87AF5F'
-let s:g_i_fg    = '#FFFFFF'
+let s:g_i_bg    = '#1C1C1C'
+let s:g_i_fg    = '#D0D0D0'
 
 let s:t_v_bg    = 234           " Background for visual mode and file position blocks
 let s:t_v_fg    = 252            " Foreground for visual mode and file position blocks
-let s:g_v_bg    = '#ff8c00'
-let s:g_v_fg    = '#FFFFFF'
+let s:g_v_bg    = '#1C1C1C'
+let s:g_v_fg    = '#D0D0D0'
 
 let s:t_r_bg    = 234            " Background for replace mode and file position blocks
 let s:t_r_fg    = 252            " Foreground for replace mode and file position blocks
-let s:g_r_bg    = '#870000'
-let s:g_r_fg    = '#FFFFFF'
+let s:g_r_bg    = '#1C1C1C'
+let s:g_r_fg    = '#D0D0D0'
 
 let s:t_a       = 234            " Modified file alert color
-let s:g_a       = '#870000'
+let s:g_a       = '#1C1C1C'
 
 let s:t_x_bg    = 234           " Background for inactive mode
 let s:t_x_fg    = 252           " Foreground for inactive mode
 let s:g_x_bg    = '#1C1C1C'
-let s:g_x_fg    = '#4E4E4E'
+let s:g_x_fg    = '#D0D0D0'
 
 " Branch and file format
 

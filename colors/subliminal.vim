@@ -126,32 +126,33 @@ hi cssCommonAttr ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui
 hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 
+" NerdTree
 
-hi NERDTreePart ctermfg=238 ctermbg=NONE
-hi NERDTreePartFile ctermfg=238 ctermbg=NONE
-hi NERDTreeExecFile ctermfg=238 ctermbg=NONE
-hi NERDTreeDirSlash ctermfg=238 ctermbg=NONE
-hi NERDTreeBookmarksHeader ctermfg=238 ctermbg=NONE
-hi NERDTreeBookmarksLeader ctermfg=238 ctermbg=NONE
-hi NERDTreeBookmarkName ctermfg=238 ctermbg=NONE
-hi NERDTreeBookmark ctermfg=238 ctermbg=NONE
-hi NERDTreeHelp ctermfg=238 ctermbg=NONE
-hi NERDTreeHelpKey ctermfg=238 ctermbg=NONE
-hi NERDTreeHelpCommand ctermfg=238 ctermbg=NONE
-hi NERDTreeHelpTitle ctermfg=238 ctermbg=NONE
-hi NERDTreeToggleOn ctermfg=238 ctermbg=NONE
-hi NERDTreeToggleOff ctermfg=238 ctermbg=NONE
-hi NERDTreeLinkTarget ctermfg=238 ctermbg=NONE
-hi NERDTreeLinkFile ctermfg=238 ctermbg=NONE
-hi NERDTreeLinkDir ctermfg=238 ctermbg=NONE
-hi NERDTreeDir ctermfg=238 ctermbg=NONE
-hi NERDTreeUp ctermfg=238 ctermbg=NONE
-hi NERDTreeFile ctermfg=238 ctermbg=NONE
-hi NERDTreeCWD ctermfg=238 ctermbg=NONE
-hi NERDTreeOpenable ctermfg=238 ctermbg=NONE
-hi NERDTreeClosable ctermfg=238 ctermbg=NONE
-hi NERDTreeIgnore ctermfg=238 ctermbg=NONE
-hi NERDTreeRO ctermfg=238 ctermbg=NONE
-hi NERDTreeBookmark ctermfg=238 ctermbg=NONE
-hi NERDTreeFlags ctermfg=238 ctermbg=NONE
-hi NERDTreeCurrentNode ctermfg=238 ctermbg=NONE
+hi NERDTreePart ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreePartFile ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeExecFile ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeDirSlash ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeBookmarksHeader ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeBookmarksLeader ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeBookmarkName ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeBookmark ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeHelp ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeHelpKey ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeHelpCommand ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeHelpTitle ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeToggleOn ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeToggleOff ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeLinkTarget ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeLinkFile ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeLinkDir ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeDir ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeUp ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeFile ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeCWD ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeOpenable ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeClosable ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeIgnore ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeRO ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeBookmark ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeFlags ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
+hi NERDTreeCurrentNode ctermfg=238 ctermbg=NONE guifg=#444444 guibg=NONE gui=NONE
