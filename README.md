@@ -48,7 +48,7 @@ Then, open a user terminal and start the installation process with the following
 This will take a few minutes to complete depending on your internet connection speed.
 
 ```bash
-bash <(curl -sfLo- https://raw.githubusercontent.com/LuisAlejandro/subliminal-view/development/install.sh)
+bash <(curl -fLo- https://raw.githubusercontent.com/LuisAlejandro/subliminal-view/development/install.sh)
 ```
 
 ## Usage
