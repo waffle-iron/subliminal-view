@@ -17,7 +17,10 @@
 "   You should have received a copy of the GNU General Public License
 "   along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+set nocompatible
 
+let $VIM='~/.config/subliminal-view/runtime'
+let $VIMRUNTIME='~/.config/subliminal-view/runtime'
 set runtimepath=$VIMRUNTIME,~/.config/subliminal-view/plug
 
 call plug#begin('~/.config/subliminal-view/plugins')

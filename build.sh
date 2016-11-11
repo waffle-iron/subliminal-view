@@ -133,6 +133,7 @@ cp "${BASEDIR}/ui/search" "${BASEDIR}/subliminal-view/bin"
 cp "${URXVT_TEMPDIR}/urxvt/src/rxvt" "${BASEDIR}/subliminal-view/bin"
 cp "${URXVT_TEMPDIR}/urxvt/src/urxvt.pm" "${BASEDIR}/subliminal-view/urxvt"
 cp "${VIM_TEMPDIR}/vim/src/vim" "${BASEDIR}/subliminal-view/bin"
+cp -r "${VIM_TEMPDIR}/vim/runtime" "${BASEDIR}/subliminal-view/"
 
 echospaced "Generating Subliminal View icons ..."
 for S in ${ICONSIZES}; do
@@ -165,6 +166,8 @@ for G in ${GIT_REPOS}; do
     git clone --depth 1 --single-branch ${G}
 done
 
+
+
 cd ${BASEDIR}
 
 PYTHONPKGLIST="pylint pyflakes pep8 pydocstyle docutils yamllint vim-vint"
@@ -172,10 +175,10 @@ NODEPKGLIST="jshint jsonlint csslint sass-lint less dockerfile_lint"
 RUBYPKGLIST="rubocop mdl sqlint"
 GOPKGLIST="github.com/golang/lint/golint"
 
-RUBYSNDBX="${BASEDIR}/sandboxes/ruby"
-PYTHONSNDBX="${BASEDIR}/sandboxes/python"
-NODESNDBX="${BASEDIR}/sandboxes/node"
-GOSNDBX="${BASEDIR}/sandboxes/go"
+RUBYSNDBX="${BASEDIR}/subliminal-view/sandboxes/ruby"
+PYTHONSNDBX="${BASEDIR}/subliminal-view/sandboxes/python"
+NODESNDBX="${BASEDIR}/subliminal-view/sandboxes/node"
+GOSNDBX="${BASEDIR}/subliminal-view/sandboxes/go"
 
 echospaced "Generating Ruby sandbox ..."
 mkdir -vp ${RUBYSNDBX}
@@ -185,6 +188,7 @@ echospaced "Generating Python sandbox ..."
 mkdir -vp ${PYTHONSNDBX}
 virtualenv ${PYTHONSNDBX}
 ${PYTHONSNDBX}/bin/pip install ${PYTHONPKGLIST}
+virtualenv --relocatable ${PYTHONSNDBX}
 
 echospaced "Generating NodeJS sandbox ..."
 mkdir -vp ${NODESNDBX}

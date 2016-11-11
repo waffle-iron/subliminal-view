@@ -21,7 +21,6 @@
 " Compatibility
 
 syntax on                                       " Turn on syntax highlighting
-set nocompatible                                " Enable full language support
 filetype plugin on
 filetype indent on
 

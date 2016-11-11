@@ -37,10 +37,10 @@ fi
 ICONSIZES="16 22 32 48 64 128 256 512"
 FONTNAME="DejaVu Sans Mono for Powerline Nerd Font Complete Mono.ttf"
 
-RUBYSNDBX="${BASEDIR}/sandboxes/ruby"
-PYTHONSNDBX="${BASEDIR}/sandboxes/python"
-NODESNDBX="${BASEDIR}/sandboxes/node"
-GOSNDBX="${BASEDIR}/sandboxes/go"
+RUBYSNDBX="${HOME}/.config/subliminal-view/sandboxes/ruby"
+PYTHONSNDBX="${HOME}/.config/subliminal-view/sandboxes/python"
+NODESNDBX="${HOME}/.config/subliminal-view/sandboxes/node"
+GOSNDBX="${HOME}/.config/subliminal-view/sandboxes/go"
 
 PYTHONPKGLIST="pylint pyflakes pep8 pydocstyle docutils yamllint vim-vint"
 NODEPKGLIST="jshint jsonlint csslint sass-lint less dockerfile_lint"
@@ -52,11 +52,6 @@ RUNPKGLIST="silversearcher-ag exuberant-ctags xclip wmctrl fontconfig git zenity
     curl bash gksu xdg-utils coreutils"
 
 INSTALL_ARGS_FILE="${HOME}/.config/subliminal-view/install-args.conf"
-# if [ "${BASEDIR}" == "/opt/subliminal-view" ]; then
-#     WINDOW_ICON="/usr/share/icons/hicolor/22x22/apps/subliminal-view.png"
-# else
-#     WINDOW_ICON="${HOME}/.local/share/icons/hicolor/22x22/apps/subliminal-view.png"
-# fi
 
 if [ ! -d "${HOME}/.config/subliminal-view" ]; then
 
@@ -70,8 +65,9 @@ if [ ! -d "${HOME}/.config/subliminal-view" ]; then
     cp -vrf "${BASEDIR}/plugins/subliminal-view/." "${HOME}/.config/subliminal-view/app"
     cp -vrf "${BASEDIR}/sandboxes" "${HOME}/.config/subliminal-view"
     cp -vrf "${BASEDIR}/urxvt" "${HOME}/.config/subliminal-view"
+    cp -vrf "${BASEDIR}/runtime" "${HOME}/.config/subliminal-view"
     cp -vrf "${BASEDIR}/plug" "${HOME}/.config/subliminal-view"
-    cp -vrf "${BASEDIR}/subliminal-view.sh" "${HOME}/.local/bin"
+    cp -vrf "${BASEDIR}/subliminal-view.sh" "${HOME}/.local/bin/subliminal-view"
 
     echospaced "Installing icons ..."
     for S in ${ICONSIZES}; do
@@ -320,13 +316,12 @@ zenity --progress --pulsate --auto-close --no-cancel --window-icon "${WINDOW_ICO
 # xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom -r -R
 # xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom -r -R
 
-URXVT_BASH_CMD="stty -ixon susp undef; \
-    ${HOME}/.config/subliminal-view/bin/vim --servername subliminal-view-${$} \
-    -u ${HOME}/.config/subliminal-view/app/init.vim ${*}"
-
-URXVT_CMD="${HOME}/.config/subliminal-view/bin/rxvt \
-    -perl-lib \"${HOME}/.config/subliminal-view/app/extensions\" \
-    -icon \"${WINDOW_ICON}\" -name \"subliminal-view\" -e bash -c \"${URXVT_BASH_CMD}\""
-
 env XENVIRONMENT="${HOME}/.config/subliminal-view/app/Xresources" \
-    PERL5LIB="${HOME}/.config/subliminal-view/urxvt" ${URXVT_CMD}
+    URXVT_PERL_LIB="${HOME}/.config/subliminal-view/app/extensions" \
+    PERL5LIB="${HOME}/.config/subliminal-view/urxvt" \
+    DISPLAY="${DISPLAY}" \
+    "${HOME}/.config/subliminal-view/bin/rxvt" \
+    -icon "${HOME}/.local/share/icons/hicolor/22x22/apps/subliminal-view.png" \
+    -name "subliminal-view" -e bash -c "stty -ixon susp undef; \
+        ${HOME}/.config/subliminal-view/bin/vim --servername subliminal-view-${$} \
+        -u ${HOME}/.config/subliminal-view/app/init.vim ${*}"
