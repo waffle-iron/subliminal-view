@@ -25,7 +25,7 @@ set runtimepath=$VIMRUNTIME,~/.config/subliminal-view/plug
 
 call plug#begin('~/.config/subliminal-view/plugins')
 
-Plug 'LuisAlejandro/subliminal-view', {'dir': '~/.config/subliminal-view/app', 'do': './configure.sh', 'branch': 'development'}
+Plug 'LuisAlejandro/subliminal-view', {'dir': '~/.config/subliminal-view/app', 'do': './configure.sh', 'branch': 'develop'}
 Plug 'LuisAlejandro/vim-autoswap'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'

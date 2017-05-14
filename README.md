@@ -1,8 +1,10 @@
 <img align="right" height="100" src="https://cloud.githubusercontent.com/assets/324683/14374725/0a483732-fd23-11e5-9b56-b0e280b20760.png">
 
-# Subliminal View 0.1a1
+# Subliminal View
 
 > An open source alternative to Sublime Text based on vim and urxvt
+
+Current version: 0.1a1
 
 **Attention: this in an alpha release. Don't use it on production environments as
 you will probably experience bugs.**

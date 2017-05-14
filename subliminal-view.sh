@@ -35,7 +35,7 @@ else
 fi
 
 ICONSIZES="16 22 32 48 64 128 256 512"
-FONTNAME="DejaVu Sans Mono for Powerline Nerd Font Complete Mono.ttf"
+FONTNAME="DejaVu Sans Mono Nerd Font Complete Mono.ttf"
 
 RUBYSNDBX="${HOME}/.config/subliminal-view/sandboxes/ruby"
 PYTHONSNDBX="${HOME}/.config/subliminal-view/sandboxes/python"
@@ -278,7 +278,7 @@ zenity --progress --pulsate --auto-close --no-cancel --window-icon "${WINDOW_ICO
         echospaced "Installing missing dpkg dependencies ..."
 
         if [ -n "${NODEPKGLIST}" ]; then
-            sudo -E bash <(curl -sfLo- https://deb.nodesource.com/setup_6.x) >/dev/null 2>&1
+            sudo -E bash <(curl -sfLo- https://deb.nodesource.com/setup_7.x) >/dev/null 2>&1
         fi
 
         gksudo -- ${APTGETCMD} ${APTGETOPTS} update

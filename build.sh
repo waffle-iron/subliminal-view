@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -ex
 
 function echospaced() {
     printf "\n# %s\n" "${1}"
@@ -7,21 +8,15 @@ function echospaced() {
 
 ICONSIZES="16 22 32 48 64 128 256 512"
 
-
-BUILDER="luis@huntingbears.com.ve"
-
-URXVT_BUILD_DEPENDS="libxt-dev libxrender-dev libx11-dev libxpm-dev groff-base \
-                    autotools-dev xutils-dev libxft-dev chrpath libperl-dev \
-                    libev-dev libstartup-notification0-dev libgtk2.0-dev"
-VIM_BUILD_DEPENDS="libacl1-dev libgpmg1-dev autoconf debhelper libncurses5-dev \
-                   libselinux1-dev libgtk2.0-dev libgtk-3-dev libxaw7-dev libxt-dev \
-                   libxpm-dev libperl-dev tcl-dev python3-dev ruby ruby-dev lua5.2 \
-                   liblua5.2-dev"
-
 BASEDIR="$(pwd)"
 URXVT_TEMPDIR="$(mktemp -d)"
 VIM_TEMPDIR="$(mktemp -d)"
-GIT_REPOS="$(cat "${BASEDIR}/init.vim" | grep "Plug" | grep -v "subliminal-view" | awk -F"'" '{print "https://github.com/"$2".git"}')"
+
+BUILDER="luis@huntingbears.com.ve"
+GITREPOS="$(cat "${BASEDIR}/init.vim" | grep "Plug" | grep -v "subliminal-view" | awk -F"'" '{print "https://github.com/"$2".git"}')"
+NERDFONT="DejaVu Sans Mono Nerd Font Complete Mono.ttf"
+ESCNERDFONT="$(python3 -c "import urllib.parse; print(urllib.parse.quote('''${NERDFONT}'''))")"
+
 DEB_HOST_GNU_TYPE="$(dpkg-architecture -qDEB_HOST_GNU_TYPE)"
 DEB_BUILD_GNU_TYPE="$(dpkg-architecture -qDEB_BUILD_GNU_TYPE)"
 CPPFLAGS="$(dpkg-buildflags --get CPPFLAGS) -Wall"
@@ -103,8 +98,9 @@ URXVT_CONFIG=" \
     --enable-startup-notification \
     --with-term=rxvt-unicode-256color"
 
-mkdir -p "${BASEDIR}/subliminal-view/bin"
-mkdir -p "${BASEDIR}/subliminal-view/urxvt"
+mkdir -vp "${BASEDIR}/subliminal-view/bin"
+mkdir -vp "${BASEDIR}/subliminal-view/urxvt"
+mkdir -vp "${BASEDIR}/subliminal-view/plugins"
 
 echospaced "Downloading Vim source ..."
 git clone --depth 1 --branch master --single-branch \
@@ -143,32 +139,25 @@ for S in ${ICONSIZES}; do
         "${BASEDIR}/subliminal-view/icons/hicolor/${S}x${S}/apps/subliminal-view.png"
 done
 
-echospaced "Generating Subliminal View icons ..."
-curl -fLo "${BASEDIR}/subliminal-view/plug/autoload/plug.vim" --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-NERDFONT="DejaVu Sans Mono for Powerline Nerd Font Complete Mono.ttf"
-ESCNERDFONT="$(python -c "import urllib; print urllib.quote('''${NERDFONT}''')")"
-
+echospaced "Generating Subliminal View fonts ..."
 curl -fLo "${BASEDIR}/subliminal-view/fonts/${NERDFONT}" --create-dirs \
     "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/${ESCNERDFONT}"
 
 curl -fLo "${BASEDIR}/subliminal-view/fonts/fontawesome-webfont.ttf" --create-dirs \
     https://github.com/FortAwesome/Font-Awesome/raw/master/fonts/fontawesome-webfont.ttf
 
-mkdir "${BASEDIR}/subliminal-view/plugins"
+echospaced "Installing Subliminal View plugins ..."
+curl -fLo "${BASEDIR}/subliminal-view/plug/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 cd "${BASEDIR}/subliminal-view/plugins"
 
-git clone --depth 1 --single-branch --branch development \
-    https://github.com/LuisAlejandro/subliminal-view.git
+git clone --depth 1 --single-branch --branch develop \
+    https://github.com/LuisAlejandro/subliminal-view
 
-for G in ${GIT_REPOS}; do
+for G in ${GITREPOS}; do
     git clone --depth 1 --single-branch ${G}
 done
-
-
-
-cd ${BASEDIR}
 
 PYTHONPKGLIST="pylint pyflakes pep8 pydocstyle docutils yamllint vim-vint"
 NODEPKGLIST="jshint jsonlint csslint sass-lint less dockerfile_lint"
@@ -180,15 +169,17 @@ PYTHONSNDBX="${BASEDIR}/subliminal-view/sandboxes/python"
 NODESNDBX="${BASEDIR}/subliminal-view/sandboxes/node"
 GOSNDBX="${BASEDIR}/subliminal-view/sandboxes/go"
 
+cd ${BASEDIR}
+
 echospaced "Generating Ruby sandbox ..."
 mkdir -vp ${RUBYSNDBX}
 gem install --install-dir ${RUBYSNDBX} ${RUBYPKGLIST}
 
 echospaced "Generating Python sandbox ..."
 mkdir -vp ${PYTHONSNDBX}
-virtualenv ${PYTHONSNDBX}
+virtualenv --python python3 ${PYTHONSNDBX}
 ${PYTHONSNDBX}/bin/pip install ${PYTHONPKGLIST}
-virtualenv --relocatable ${PYTHONSNDBX}
+virtualenv --python python3 --relocatable ${PYTHONSNDBX}
 
 echospaced "Generating NodeJS sandbox ..."
 mkdir -vp ${NODESNDBX}
@@ -200,7 +191,4 @@ export GOPATH="${GOSNDBX}"
 go get -v ${GOPKGLIST}
 
 tar -czf subliminal-view_${VERSION}.tar.gz subliminal-view
-
-
-
-# rm -rf "${VIM_TEMPDIR}" "${URXVT_TEMPDIR}" subliminal-view
+rm -rf "${VIM_TEMPDIR}" "${URXVT_TEMPDIR}" subliminal-view
